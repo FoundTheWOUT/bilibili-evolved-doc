@@ -1,0 +1,30 @@
+{
+  "title": "User Manual",
+  "hide": true,
+  "routes": [
+    {
+      "title": "😊 欢迎使用",
+      "path": "/user"
+    },
+    {
+      "title": "📦 安装",
+      "path": "/user/install"
+    },
+    {
+      "title": "⚙ 设置",
+      "path": "/user/settings"
+    },
+    {
+      "title": "📚 组件（插件）",
+      "path": "/user/features"
+    },
+    {
+      "title": "❓ Q&A",
+      "path": "/user/Q&A"
+    },
+    {
+      "title": "从 v1 迁移",
+      "path": "/user/migrate-v1"
+    }
+  ]
+}

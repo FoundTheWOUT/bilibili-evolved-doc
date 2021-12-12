@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .index-card {
+    @apply p-6 mt-6 text-left border dark:border-stone-500 w-60 h-60 lg:w-96 lg:h-96 rounded-xl
+    flex
+    flex-col
+    justify-center
+    items-center
+    cursor-pointer
+    select-none
+    bg-white
+    dark:bg-stone-700
+    hover:bg-sky-50
+    dark:hover:bg-sky-700
+    hover:text-sky-500
+    dark:hover:text-sky-200
+    hover:border-none
+    hover:shadow-lg
+    hover:shadow-sky-500/50
+    dark:hover:shadow-sky-700/50
+    focus:text-sky-500
+    transition-shadow;
+  }
+}
+
+*::-webkit-scrollbar {
+  width: 5px !important;
+  height: 5px !important;
+}
+*::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+*::-webkit-resizer,
+*::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 3px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+* {
+  scrollbar-color: #aaa transparent;
+  scrollbar-width: thin !important;
+}

@@ -1,0 +1,124 @@
+<div align="center"><img id="Bilibili-Evolved" width="500" alt="Bilibili Evolved" src="/bilibili-evolved-wide-color.svg"/></div>
+<div align="center" class="dark:text-white">
+「 强大的哔哩哔哩增强脚本 」
+</div>
+
+### 请先观看
+
+1.  [安装](/user/install)
+2.  [设置](/user/settings)
+
+## 兼容性
+
+### 脚本管理器
+
+#### [Tampermonkey](https://tampermonkey.net/) / [Violentmonkey](https://violentmonkey.github.io/)
+
+兼容, 但在较旧的浏览器中 Violentmonkey 可能无法运行此脚本.
+
+> Tampermonkey 版本不能是 4.14.6147 / 6148
+
+#### [Greasemonkey](https://www.greasespot.net/)
+
+不兼容.
+
+#### [AdGuard](https://adguard.com/zh_cn/adguard-windows/overview.html)
+
+未测试.
+
+### 浏览器
+
+支持**最新版** Chrome, Edge (Chromium 内核), Firefox, 不保证脚本能在["套壳类浏览器"](https://www.jianshu.com/p/67d790a8f221)或者较长时间没更新的浏览器中完美运行.
+
+## 开发者
+
+![](https://contrib.rocks/image?repo=the1812/Bilibili-Evolved)
+
+### 文案翻译贡献者
+
+- [PleiadeSubaru](https://github.com/Etherrrr)
+- [Lets-Halloween](https://github.com/Lets-Halloween)
+- Joshua ふみひる
+
+## 参与项目
+
+欢迎参考[代码贡献指南](/developer)来为项目添砖加瓦~
+
+## 隐私声明
+
+本脚本以及本仓库中提供的组件/插件, 是完全匿名的. 用户数据的使用均在本地完成, 不会存储到任何服务器, 也不会有所谓的"用户体验改善计划"来收集统计数据.
+
+但是, 任何组件/插件都对用户数据有着完全的访问能力, 对于其他来源(非本仓库提供)的组件/插件, 请自行甄别其安全性.
+
+## 第三方开源组件
+
+👍 感谢这些组件帮助我们极大地提升了开发效率.
+
+- [Vue.js](https://cn.vuejs.org/index.html)
+- [JSZip](https://stuk.github.io/jszip/)
+- [bilibili API collect](https://github.com/SocialSisterYi/bilibili-API-collect)
+- [popper-core](https://github.com/popperjs/popper-core)
+- [Tippy.js](https://github.com/atomiks/tippyjs)
+- [Sortable](https://github.com/SortableJS/Sortable)
+- [color](https://github.com/Qix-/color)
+- [Lodash](https://lodash.com/)
+- [marked](https://github.com/markedjs/marked)
+- [MDI](https://materialdesignicons.com)
+
+## 相关推荐
+
+这些脚本/插件同样能够改善您在 B 站的体验, 相同的功能将不会整合到 Bilibili Evolved, 但会尽可能地适配
+
+### bilibili 网页端添加 APP 首页推荐
+
+作者: [indefined](https://github.com/indefined)
+
+- [GitHub](https://github.com/indefined/UserScripts/tree/master/bilibiliHome)
+- [GreasyFork](https://greasyfork.org/zh-CN/scripts/368446-bilibili%E7%BD%91%E9%A1%B5%E7%AB%AF%E6%B7%BB%E5%8A%A0app%E9%A6%96%E9%A1%B5%E6%8E%A8%E8%8D%90)
+
+### pakku.js 哔哩哔哩弹幕过滤器
+
+作者: [xmcp](https://github.com/xmcp)
+
+- [主页](https://s.xmcp.ml/pakkujs/)
+- [GitHub](https://github.com/xmcp/pakku.js)
+
+### BLTH - Bilibili Live Tasks Helper
+
+作者: [andywang425](https://github.com/andywang425)
+
+- [GitHub](https://github.com/andywang425/BLTH)
+- [GreasyFork](https://greasyfork.org/zh-CN/scripts/406048-b%E7%AB%99%E7%9B%B4%E6%92%AD%E9%97%B4%E6%8C%82%E6%9C%BA%E5%8A%A9%E6%89%8B)
+
+---
+
+**喜欢的话就点个 ⭐Star 吧(°∀°)ﾉ**
+
+**或者也可以考虑[捐助](doc/donate.md)支持一下哦(｀・ω・´)**
+
+> 之前的支付宝付款码有点问题, 现已弃用 (不必担心, 转账均已收到), 在爱发电中仍然可以选择支付宝作为付款方式.
+
+<div class="flex justify-center items-center">
+  <a href="https://afdian.net/@the1812" target="_blank">
+    <img alt="爱发电" src="/images/afdian.jpg" width="400"/>
+  </a>
+  <img alt="微信" src="/images/wechat.jpg" width="400"/>
+</div>
+
+## 我写的其他一些玩意
+
+### [Touhou Tagger](https://github.com/the1812/Touhou-Tagger)
+
+☯ 从 [THBWiki](https://thwiki.cc/) 自动填写东方 Project 同人音乐 CD 曲目信息
+
+## [Malware Patch](https://github.com/the1812/Malware-Patch)
+
+阻止中国流氓软件的管理员授权
+
+## [dizzylab auto theme](https://github.com/the1812/dizzylab-auto-theme)
+
+[dizzylab](https://www.dizzylab.net/) 自适应 Stylus 主题, 跟随系统亮/暗设定
+
+## [Steam CSS](https://github.com/the1812/SteamCSS)
+
+为 [Steam](https://store.steampowered.com/) 的库和内置浏览器插入一段自定义的 CSS, 用于更换字体等
