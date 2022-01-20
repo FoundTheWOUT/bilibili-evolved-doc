@@ -1,6 +1,7 @@
 ## 安装
 
-需要浏览器装有 [Tampermonkey](https://tampermonkey.net/) 或 [Violentmonkey](https://violentmonkey.github.io/) 插件, 下方表格中挑一个链接安装.
+12
+<!-- 需要浏览器装有 [Tampermonkey](https://tampermonkey.net/) 或 [Violentmonkey](https://violentmonkey.github.io/) 插件, 下方表格中挑一个链接安装.
 
 **注意事项**
 
@@ -12,4 +13,4 @@
 |          | 更新延迟 | 正式版                                                                                                  | 预览版                                                                                                           |
 | -------- | -------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | jsDelivr | 24h      | [安装](https://cdn.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/dist/bilibili-evolved.user.js)       | [安装](https://cdn.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/dist/bilibili-evolved.preview.user.js)       |
-| GitHub   | <1h      | [安装](https://raw.githubusercontent.com/the1812/Bilibili-Evolved/master/dist/bilibili-evolved.user.js) | [安装](https://raw.githubusercontent.com/the1812/Bilibili-Evolved/preview/dist/bilibili-evolved.preview.user.js) |
+| GitHub   | <1h      | [安装](https://raw.githubusercontent.com/the1812/Bilibili-Evolved/master/dist/bilibili-evolved.user.js) | [安装](https://raw.githubusercontent.com/the1812/Bilibili-Evolved/preview/dist/bilibili-evolved.preview.user.js) | -->

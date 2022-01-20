@@ -14,9 +14,7 @@
 - `浏览`: 载入本地的功能文件.
 - `在线`: 打开在线仓库窗口.
 
-<div style={{height:"60rem"}}>
-<img src="/images/manage-panel.jpg" />
-</div>
+![manage-panel](/images/manage-panel.jpg)
 
 > 用链接安装需要对应文件的直链, GitHub Raw 或 jsDelivr 都可以. 批量安装时逐行粘贴链接即可.
 

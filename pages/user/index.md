@@ -1,5 +1,5 @@
-<div align="center"><img id="Bilibili-Evolved" width="500" alt="Bilibili Evolved" src="/bilibili-evolved-wide-color.svg"/></div>
-<div align="center" class="dark:text-white">
+<div className="flex justify-center"><img id="Bilibili-Evolved" width="500" alt="Bilibili Evolved" src="/bilibili-evolved-wide-color.svg"/></div>
+<div align="center" className="dark:text-white">
 「 强大的哔哩哔哩增强脚本 」
 </div>
 
@@ -98,7 +98,7 @@
 
 > 之前的支付宝付款码有点问题, 现已弃用 (不必担心, 转账均已收到), 在爱发电中仍然可以选择支付宝作为付款方式.
 
-<div class="flex justify-center items-center">
+<div className="flex flex-col md:flex-row justify-center items-center">
   <a href="https://afdian.net/@the1812" target="_blank">
     <img alt="爱发电" src="/images/afdian.jpg" width="400"/>
   </a>

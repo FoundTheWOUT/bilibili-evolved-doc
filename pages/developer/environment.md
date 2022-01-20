@@ -20,7 +20,6 @@ yarn
 
 > 如果不使用 Visual Studio Code, 则需要根据 `.vscode/tasks.json` 中各个任务定义的命令手动在终端执行. (npm scripts 仅用于 CI)
 
-
 ### Chromium
 
 1. Chrome 插件管理 `chrome://extensions/` > Tampermonkey > 详细信息
@@ -75,9 +74,17 @@ yarn
 
 6. 在那些 `@require` 下面再添加一行 `@require file://{{ bilibili-evolved.dev.user.js的绝对路径 }}`
 
-   > Windows 例子: `@require file://C:/xxx/Bilibili-Evolved/bilibili-evolved.dev.user.js`
+- Windows 例子:
 
-   > macOS 例子: `@require file:///Users/xxx/Documents/Bilibili-Evolved/bilibili-evolved.dev.user.js`
+```js
+// @require file://C:/xxx/Bilibili-Evolved/bilibili-evolved.dev.user.js
+```
+
+   - macOS 例子:
+
+```js
+// @require file:///path/to/bilibili-evolved.dev.user.js
+```
 
 7. 保存脚本, 监视模式下保存文件构建完成后, 刷新即可生效
 
