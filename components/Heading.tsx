@@ -10,19 +10,35 @@ export interface HeadingProps {
   as?: any;
 }
 
+const parseElementToSting = (node: JSX.Element | string): string => {
+  if (typeof node === "string") return node;
+  return parseElementToSting(node.props.children);
+};
+
 const createHeaderLink = (children: JSX.Element) => {
   let slugger = new GithubSlugger();
   slugger.reset();
-  // TODO: use id witch generate by export heading
-  const id = slugger.slug(children.props.children);
+  const { children: content } = children.props;
+
+  let title: string;
+  if (Array.isArray(content)) {
+    title = content.map(parseElementToSting).join(" ");
+  } else {
+    title = parseElementToSting(content);
+  }
+  const id = slugger.slug(title);
 
   return (
-    <a id={id} href={`#${id}`} className="anchor group flex relative">
-      <div className="opacity-0 h-full flex group-hover:opacity-100 items-center absolute transform -translate-x-full transition-opacity dark:text-white">
-        <LinkIcon className="h-6" />
-      </div>
+    <div className="group relative">
       {children}
-    </a>
+      <a
+        id={id}
+        href={`#${id}`}
+        className="anchor flex opacity-0 h-full group-hover:opacity-100 items-center absolute top-0 transform -translate-x-full transition-opacity dark:text-white"
+      >
+        <LinkIcon className="h-6" />
+      </a>
+    </div>
   );
 };
 
@@ -59,9 +75,8 @@ export const H3 = ({ className, ...props }: HeadingProps) =>
     />
   );
 
-export const H4 = ({ className, ...props }: HeadingProps) => {
-  // console.log(props);
-  return createHeaderLink(
+export const H4 = ({ className, ...props }: HeadingProps) =>
+  createHeaderLink(
     <h4
       className={cn(
         className,
@@ -70,4 +85,3 @@ export const H4 = ({ className, ...props }: HeadingProps) => {
       {...props}
     />
   );
-};
