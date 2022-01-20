@@ -55,7 +55,7 @@ const Code = ({ children }: JSX.IntrinsicElements["code"]) => {
   const highlighted = hljs.highlightAuto(children as string);
   return (
     <code
-      className="hljs rounded"
+      className="hljs rounded max-w-4xl mx-auto"
       dangerouslySetInnerHTML={{ __html: highlighted.value }}
     />
   );
@@ -63,8 +63,8 @@ const Code = ({ children }: JSX.IntrinsicElements["code"]) => {
 
 const InlineCode = ({ ...props }: JSX.IntrinsicElements["code"]) => {
   return (
-    <code
-      className="bg-sky-50 dark:bg-sky-900 text-sky-700 dark:text-sky-300 rounded-md px-1"
+    <span
+      className="font-medium bg-sky-50 dark:bg-sky-900 text-sky-700 dark:text-sky-300 rounded-md px-1"
       {...props}
     />
   );
@@ -100,8 +100,17 @@ export const MDXComponents = {
   a: ({ ...props }) => (
     <a className="text-sky-500 hover:text-sky-700" {...props}></a>
   ),
-  img: ({ ...props }) => <img className="h-full rounded-md m-2 object-cover" {...props} />,
+  img: ({ ...props }) => {
+    return (
+      <span className="flex m-2">
+        <img className="rounded-lg max-h-[60rem]" {...props} />
+      </span>
+    );
+  },
   figcaption: ({ ...props }) => (
     <figcaption className="dark:text-white" {...props} />
+  ),
+  summary: ({ ...props }) => (
+    <summary className="dark:text-white cursor-pointer" {...props} />
   ),
 };

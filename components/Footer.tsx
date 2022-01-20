@@ -100,8 +100,8 @@ export default function Footer({ routerTree }: FooterProps) {
             height={24}
             src={
               theme === Themes.DARK
-                ? "/icons/Github-Mark-Light-32px.png"
-                : "/icons/Github-Mark-32px.png"
+                ? "/icons/github-light.png"
+                : "/icons/github.png"
             }
             alt="https://github.com/FoundTheWOUT/bilibili-evolved-doc"
           />

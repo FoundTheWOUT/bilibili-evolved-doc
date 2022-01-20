@@ -24,13 +24,6 @@ const Home: NextPage = () => {
           </a>
         </h1>
 
-        {/* <p className="mt-3 text-2xl">
-          Get started by editing{" "}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p> */}
-
         <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
           <Link href="/user" passHref>
             <div className="index-card shadow-runner">
@@ -46,18 +39,6 @@ const Home: NextPage = () => {
           </a>
         </div>
       </main>
-
-      {/* <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer> */}
     </div>
   );
 };
