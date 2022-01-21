@@ -31,7 +31,7 @@
 - `core/settings`: 脚本设置 API, 可监听设置变更, 获取组件设置, 判断组件是否开启等
 - `core/toast`: 通知 API, 能够在左下角显示通知
 - `core/utils`: 工具集, 包含各种常量, 格式化函数, 排序工具, 标题获取, 日志等
-- `theWorld`: ~~并没有什么用的API，~~与 `debug` 几乎等价，不同的是，它是一个函数，参数是`time: number`，代表`time`秒后时停。
+- [`theWorld`](https://zh.moegirl.org.cn/THE_WORLD): ~~并没有什么用的API，~~与 `debugger` 几乎等价，不同的是，它是一个函数，参数是`time: number`，代表`time`毫秒后时停。
 
 ### 组件 API
 

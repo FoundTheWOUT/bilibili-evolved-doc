@@ -3,7 +3,7 @@ import Link from "next/link";
 import cn from "classnames";
 import { useRouter } from "next/router";
 
-const DocType = () => {
+const DocType = ({ ...props }) => {
   const { pathname } = useRouter();
 
   const style = (type: string) => {
@@ -14,7 +14,7 @@ const DocType = () => {
   };
 
   return (
-    <div className="flex relative flex-1 bg-stone-100 dark:bg-stone-700 rounded-md p-1">
+    <div {...props}>
       <Link href="/user" passHref>
         <div className={style("user")}>
           <span>用户手册</span>

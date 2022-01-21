@@ -1,11 +1,11 @@
 import React, { PropsWithChildren, useState } from "react";
 import { useRouter } from "next/router";
-import { SearchIcon } from "@heroicons/react/solid";
 import SideBarTree from "./SideBarTree";
 import DocType from "./DocType";
 import DarkSwitch from "components/DarkSwitch";
 import Title from "components/Title";
 import cn from "classnames";
+import Search from "./Search";
 
 export interface RouteItem {
   title: string;
@@ -49,31 +49,22 @@ export const SideBar = ({ routerTree }: SideBarProps) => {
           }
         )}
       >
-        <div>
-          <Title className="p-4 flex items-center invisible lg:visible" />
+        <Title className="p-4 flex items-center invisible lg:visible" />
 
-          <div className="h-8 flex px-4 items-center dark:text-white">
-            <DocType />
-            <DarkSwitch className="hidden lg:flex" />
-          </div>
-
-          {/* search */}
-          <div className="p-4">
-            <button
-              type="button"
-              className="p-2 w-full rounded flex items-center bg-stone-100 dark:bg-stone-700 text-gray-400 dark:text-stone-400 focus:ring ring-sky-200 dark:ring-sky-700"
-            >
-              <SearchIcon className="h-5 w-5 mx-2 text-stone-500 dark:text-stone-300" />
-              搜索
-              <kbd className="ml-auto DocSearch-Button-Key">/</kbd>
-            </button>
-          </div>
-
-          {/* route */}
-          <div className="flex flex-col px-4">
-            <SideBarTree routerTree={routerTree} curPath={curPath} level={0} />
-          </div>
+        <div className="h-8 flex px-4 items-center dark:text-white">
+          <DocType className="flex relative flex-1 bg-stone-100 dark:bg-stone-700 rounded-md p-1" />
+          <DarkSwitch className="hidden lg:flex" />
         </div>
+
+        <Search className="p-4" />
+
+        {/* route */}
+        <SideBarTree
+          className="flex flex-col px-4"
+          routerTree={routerTree}
+          curPath={curPath}
+          level={0}
+        />
       </aside>
     </div>
   );

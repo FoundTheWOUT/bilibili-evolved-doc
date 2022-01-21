@@ -2,14 +2,19 @@ import React from "react";
 import { RouteItem } from ".";
 import SideBarItem from "./SideBarItem";
 
-interface SideBarTreeProps {
+type SideBarTreeProps = JSX.IntrinsicElements["ul"] & {
   routerTree: RouteItem;
   curPath: string;
   level: number;
-}
+};
 
-const SideBarTree = ({ routerTree, curPath, level }: SideBarTreeProps) => (
-  <ul>
+const SideBarTree = ({
+  routerTree,
+  curPath,
+  level,
+  ...props
+}: SideBarTreeProps) => (
+  <ul {...props}>
     {routerTree.routes &&
       routerTree.routes.map((route) => {
         const { title } = route;

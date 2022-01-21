@@ -12,6 +12,7 @@ specifiers:
   '@types/mdx-js__react': ^1.5.5
   '@types/node': 16.11.12
   '@types/react': 17.0.37
+  '@types/react-dom': ^17.0.11
   autoprefixer: ^10.4.0
   classnames: ^2.3.1
   eslint: 8.4.1
@@ -55,6 +56,7 @@ devDependencies:
   '@types/mdx-js__react': 1.5.5
   '@types/node': 16.11.12
   '@types/react': 17.0.37
+  '@types/react-dom': 17.0.11
   autoprefixer: 10.4.2_postcss@8.4.5
   eslint: 8.4.1
   eslint-config-next: 12.0.7_82a4278f859af7da3325c94de40cf7cc
@@ -831,6 +833,12 @@ packages:
 
   /@types/prop-types/15.7.4:
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
+    dev: true
+
+  /@types/react-dom/17.0.11:
+    resolution: {integrity: sha512-f96K3k+24RaLGVu/Y2Ng3e1EbZ8/cVJvypZWd7cy0ofCBaf2lcM46xNhycMZ2xGwbBjRql7hOlZ+e2WlJ5MH3Q==}
+    dependencies:
+      '@types/react': 17.0.37
     dev: true
 
   /@types/react/17.0.37:
