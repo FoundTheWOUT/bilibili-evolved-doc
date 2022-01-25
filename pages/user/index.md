@@ -111,14 +111,14 @@
 
 ☯ 从 [THBWiki](https://thwiki.cc/) 自动填写东方 Project 同人音乐 CD 曲目信息
 
-## [Malware Patch](https://github.com/the1812/Malware-Patch)
+### [Malware Patch](https://github.com/the1812/Malware-Patch)
 
 阻止中国流氓软件的管理员授权
 
-## [dizzylab auto theme](https://github.com/the1812/dizzylab-auto-theme)
+### [dizzylab auto theme](https://github.com/the1812/dizzylab-auto-theme)
 
 [dizzylab](https://www.dizzylab.net/) 自适应 Stylus 主题, 跟随系统亮/暗设定
 
-## [Steam CSS](https://github.com/the1812/SteamCSS)
+### [Steam CSS](https://github.com/the1812/SteamCSS)
 
 为 [Steam](https://store.steampowered.com/) 的库和内置浏览器插入一段自定义的 CSS, 用于更换字体等
