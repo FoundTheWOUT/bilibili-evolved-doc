@@ -8,6 +8,7 @@ import sideBarDeveloper from "constant/sidebar-developer.json";
 
 import Footer from "./Footer";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export interface RemarkHeading {
   id: string;
@@ -38,23 +39,29 @@ export default function MDXWrapper(
   const routerTree = pathname.includes("user") ? sideBarUser : sideBarDeveloper;
 
   return (
-    <MDXFrontMatter.Provider value={meta}>
-      <div className="h-full max-w-[100rem] mx-auto">
-        <SidebarProvider>
-          <NavBar />
+    <>
+      <Head>
+        <title>bilibili-evolved-doc</title>
+      </Head>
 
-          <SideBar routerTree={routerTree} />
+      <MDXFrontMatter.Provider value={meta}>
+        <div className="h-full max-w-[100rem] mx-auto">
+          <SidebarProvider>
+            <NavBar />
 
-          {/* context */}
-          <div className="px-6 lg:flex lg:ml-80">
-            <div className="basis-4/5">
-              {props.children}
-              <Footer routerTree={routerTree} />
+            <SideBar routerTree={routerTree} />
+
+            {/* context */}
+            <div className="px-6 lg:flex lg:ml-80">
+              <div className="basis-4/5">
+                {props.children}
+                <Footer routerTree={routerTree} />
+              </div>
+              <Toc headers={headers} />
             </div>
-            <Toc headers={headers} />
-          </div>
-        </SidebarProvider>
-      </div>
-    </MDXFrontMatter.Provider>
+          </SidebarProvider>
+        </div>
+      </MDXFrontMatter.Provider>
+    </>
   );
 }
