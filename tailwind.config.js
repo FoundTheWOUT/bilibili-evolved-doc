@@ -9,6 +9,9 @@ module.exports = {
   safelist: ["md:flex-row"],
   theme: {
     extend: {
+      colors: {
+        MAIN: "#1BB2ED",
+      },
       fontFamily: {
         sans: ["Inter var", "Sarasa Gothic", ...defaultTheme.fontFamily.sans],
       },

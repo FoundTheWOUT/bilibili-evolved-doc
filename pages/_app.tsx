@@ -12,7 +12,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <link rel="icon" href="/icon.svg" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <ThemeProvider>
         <div className="min-h-screen dark:bg-stone-900">

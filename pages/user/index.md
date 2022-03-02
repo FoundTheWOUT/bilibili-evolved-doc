@@ -30,10 +30,6 @@
 
 支持**最新版** Chrome, Edge (Chromium 内核), Firefox, 不保证脚本能在["套壳类浏览器"](https://www.jianshu.com/p/67d790a8f221)或者较长时间没更新的浏览器中完美运行.
 
-## 开发者
-
-![](https://contrib.rocks/image?repo=the1812/Bilibili-Evolved)
-
 ### 文案翻译贡献者
 
 - [PleiadeSubaru](https://github.com/Etherrrr)

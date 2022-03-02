@@ -7,10 +7,10 @@
   src: url("/fonts/Inter-roman.var.woff2") format("woff2");
 }
 
-@font-face {
+/* @font-face {
   font-family: "Sarasa Gothic";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: url("/fonts/sarasa-fixed-sc-regular.ttf") format("truetype");
-}
+} */
