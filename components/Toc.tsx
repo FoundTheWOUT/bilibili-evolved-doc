@@ -53,7 +53,7 @@ export default function Toc({ headers }: TocProps) {
   return (
     <div className="ml-4 text-sm hidden xl:block">
       {/* <div className="fixed right-0 top-0 pt-8 w-72 text-sm hidden lg:block"> */}
-      <div className="sticky top-8  w-64 h-[60rem] overflow-x-scroll dark:text-white">
+      <div className="sticky top-8  w-64 max-h-[75vh] overflow-x-scroll dark:text-white">
         {headers.map((header, i) => {
           let slugger = new GithubSlugger();
           slugger.reset();
