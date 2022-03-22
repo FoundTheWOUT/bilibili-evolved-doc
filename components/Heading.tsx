@@ -47,7 +47,7 @@ export const H1 = ({ className, ...props }: HeadingProps) =>
     <h1
       className={cn(
         className,
-        "text-5xl font-bold leading-tight dark:text-white"
+        "text-[2rem] my-4 font-bold leading-tight dark:text-white"
       )}
       {...props}
     />

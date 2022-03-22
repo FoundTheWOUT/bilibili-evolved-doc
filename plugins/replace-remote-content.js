@@ -19,7 +19,7 @@ const normalizeContent = (content) =>
       }
       return line;
     })
-    .filter((i) => i)
+    .filter((i) => i !== null)
     .join("\n");
 
 const loader = async function (content) {
