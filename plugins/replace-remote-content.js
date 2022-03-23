@@ -41,15 +41,13 @@ const loader = async function (content) {
       content
         .split("\n")
         .map(async (line) => {
-          // remove style block
           if (line.includes("remote")) {
-            const reg = new RegExp(/".*"/);
+            const reg = new RegExp(/(?<=src=").+(?="\s*)/g);
             let res = reg.exec(line);
-            if (res) {
-              const str = res[0];
-              res = str.slice(1, str.length - 1);
+            let text = "";
+            if (res.length) {
+              text = await fetch(res[0]).then((res) => res.text());
             }
-            const text = await fetch(res).then((res) => res.text());
 
             return normalizeContent(text);
           } else {
