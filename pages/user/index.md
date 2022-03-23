@@ -90,18 +90,9 @@
 
 **喜欢的话就点个 ⭐Star 吧(°∀°)ﾉ**
 
-**或者也可以考虑[捐助](doc/donate.md)支持一下哦(｀・ω・´)**
+**或者也可以考虑[捐助](user/donate)支持一下哦(｀・ω・´)**
 
-> 之前的支付宝付款码有点问题, 现已弃用 (不必担心, 转账均已收到), 在爱发电中仍然可以选择支付宝作为付款方式.
-
-<div className="flex flex-col md:flex-row justify-center items-center">
-  <a href="https://afdian.net/@the1812" target="_blank">
-    <img alt="爱发电" src="/images/afdian.jpg" width="400"/>
-  </a>
-  <img alt="微信" src="/images/wechat.jpg" width="400"/>
-</div>
-
-## 我写的其他一些玩意
+## 我(the1812)写的其他一些玩意
 
 ### [Touhou Tagger](https://github.com/the1812/Touhou-Tagger)
 

@@ -19,12 +19,20 @@
       "path": "/user/features"
     },
     {
+      "title": "📅 更新日志",
+      "path": "/user/changelog"
+    },
+    {
       "title": "❓ Q&A",
       "path": "/user/Q&A"
     },
     {
       "title": "从 v1 迁移",
       "path": "/user/migrate-v1"
+    },
+    {
+      "title": "🍞 投喂",
+      "path": "/user/donate"
     }
   ]
 }

@@ -248,7 +248,7 @@ https://raw.githubusercontent.com/the1812/Bilibili-Evolved/preview/registry/dist
 
 <!-- ### 组件 -->
 
-<remote src="https://cdn.jsdelivr.net/gh/the1812/Bilibili-Evolved@v2.1.7/doc/features/features.md"/>
+<remote src="https://cdn.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/doc/features/features.md"/>
 
 <!-- ### [复制动态链接](https://github.com/the1812/Bilibili-Evolved/tree/master/registry/dist/components/feeds/copy-link.js)
 

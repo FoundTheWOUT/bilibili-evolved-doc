@@ -2,10 +2,20 @@
 
 let inHTMLBlock = false;
 
+const normalizeImgBlock = (line) => {
+  if (typeof line !== "string") {
+    console.error("line must be str");
+  }
+  line = line.trim();
+  return line.slice(0, line.length - 1) + "/>";
+};
+
 const normalizeContent = (content) =>
   content
     .split("\n")
     .map((line) => {
+      if (line.includes("<img")) return normalizeImgBlock(line);
+
       if (line.includes("/style") || line.includes("/div")) {
         inHTMLBlock = false;
         return null;
