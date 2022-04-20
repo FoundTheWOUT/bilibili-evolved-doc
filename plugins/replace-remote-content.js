@@ -47,6 +47,7 @@ const loader = async function (content) {
             let text = "";
             if (res.length) {
               text = await fetch(res[0]).then((res) => res.text());
+              console.log("fetch remote content:", text);
             }
 
             return normalizeContent(text);
