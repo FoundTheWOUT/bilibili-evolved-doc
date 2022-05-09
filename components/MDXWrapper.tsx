@@ -28,12 +28,12 @@ export default function MDXWrapper(
   }>
 ) {
   const { headings, meta } = props;
-
-  const headers: TocHeader[] = headings.map((header) => ({
-    url: `#${header.id}`,
-    depth: header.depth - 1,
-    text: header.title,
-  }));
+  const headers: TocHeader[] =
+    headings?.map((header) => ({
+      url: `#${header.id}`,
+      depth: header.depth - 1,
+      text: header.title,
+    })) ?? [];
 
   const { pathname } = useRouter();
   const routerTree = pathname.includes("user") ? sideBarUser : sideBarDeveloper;
@@ -53,7 +53,7 @@ export default function MDXWrapper(
 
             {/* context */}
             <div className="px-6 lg:flex lg:ml-80">
-              <div className="basis-4/5">
+              <div className="w-4/5">
                 {props.children}
                 <Footer routerTree={routerTree} />
               </div>

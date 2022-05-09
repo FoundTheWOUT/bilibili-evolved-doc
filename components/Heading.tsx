@@ -2,14 +2,6 @@ import cn from "classnames";
 import GithubSlugger from "github-slugger";
 import { LinkIcon } from "@heroicons/react/solid";
 
-export interface HeadingProps {
-  className?: string;
-  isPageAnchor?: boolean;
-  children: React.ReactNode;
-  id?: string;
-  as?: any;
-}
-
 const parseElementToSting = (node: JSX.Element | string): string => {
   if (typeof node === "string") return node;
   return parseElementToSting(node.props.children);
@@ -42,7 +34,7 @@ const createHeaderLink = (children: JSX.Element) => {
   );
 };
 
-export const H1 = ({ className, ...props }: HeadingProps) =>
+export const H1 = ({ className, ...props }: JSX.IntrinsicElements["h1"]) =>
   createHeaderLink(
     <h1
       className={cn(
@@ -53,7 +45,7 @@ export const H1 = ({ className, ...props }: HeadingProps) =>
     />
   );
 
-export const H2 = ({ className, ...props }: HeadingProps) =>
+export const H2 = ({ className, ...props }: JSX.IntrinsicElements["h2"]) =>
   createHeaderLink(
     <h2
       className={cn(
@@ -64,7 +56,7 @@ export const H2 = ({ className, ...props }: HeadingProps) =>
     />
   );
 
-export const H3 = ({ className, ...props }: HeadingProps) =>
+export const H3 = ({ className, ...props }: JSX.IntrinsicElements["h3"]) =>
   createHeaderLink(
     <h3
       className={cn(
@@ -75,7 +67,7 @@ export const H3 = ({ className, ...props }: HeadingProps) =>
     />
   );
 
-export const H4 = ({ className, ...props }: HeadingProps) =>
+export const H4 = ({ className, ...props }: JSX.IntrinsicElements["h4"]) =>
   createHeaderLink(
     <h4
       className={cn(

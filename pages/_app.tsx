@@ -7,8 +7,6 @@ import { MDXPage } from "components/MDXPage";
 import { ThemeProvider } from "components/ThemeProvider";
 
 function App({ Component, pageProps }: AppProps) {
-  const isMDX = (Component as any).isMDXComponent;
-
   return (
     <>
       <Head>
@@ -16,13 +14,9 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <ThemeProvider>
         <div className="min-h-screen dark:bg-stone-900">
-          {isMDX ? (
-            <MDXPage>
-              <Component {...pageProps} />
-            </MDXPage>
-          ) : (
+          <MDXPage>
             <Component {...pageProps} />
-          )}
+          </MDXPage>
         </div>
       </ThemeProvider>
     </>

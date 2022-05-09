@@ -45,9 +45,11 @@ const loader = async function (content) {
             const reg = new RegExp(/(?<=src=").+(?="\s*)/g);
             let res = reg.exec(line);
             let text = "";
+            const d = new Date();
             if (res.length) {
-              text = await fetch(res[0]).then((res) => res.text());
-              console.log("fetch remote content:", text);
+              const url = `${res[0]}?spam=${Number(d)}`;
+              console.log("fetching:", url);
+              text = await fetch(url).then((res) => res.text());
             }
 
             return normalizeContent(text);

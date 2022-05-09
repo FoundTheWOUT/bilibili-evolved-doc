@@ -5,6 +5,9 @@ import * as React from "react";
 import { H1, H2, H3, H4 } from "./Heading";
 import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css";
+import { Components } from "@mdx-js/react/lib";
+import { ClipboardIcon, ClipboardCheckIcon } from "@heroicons/react/solid";
+import Link from "next/link";
 
 const P = (p: JSX.IntrinsicElements["p"]) => (
   <p className="whitespace-pre-wrap my-4 dark:text-white" {...p} />
@@ -51,13 +54,39 @@ const Blockquote = ({
   );
 };
 
-const Code = ({ children }: JSX.IntrinsicElements["code"]) => {
-  const highlighted = hljs.highlightAuto(children as string);
+const Pre = ({ children }: JSX.IntrinsicElements["pre"]) => {
+  const { children: code } = (children as any).props;
+  const highlighted = hljs.highlightAuto(code as string);
+
+  const [checked, setChecked] = React.useState(false);
+  const handleClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    // TODO: notify.
+  };
+
   return (
-    <code
-      className="hljs rounded max-w-4xl mx-auto"
-      dangerouslySetInnerHTML={{ __html: highlighted.value }}
-    />
+    <pre className="relative w-full my-2">
+      {checked ? (
+        <ClipboardCheckIcon
+          className="w-5 absolute right-0 text-white m-2 cursor-pointer"
+          onClick={() => {
+            handleClipboard(code);
+          }}
+        />
+      ) : (
+        <ClipboardIcon
+          className="w-5 absolute right-0 text-white m-2 cursor-pointer"
+          onClick={() => {
+            handleClipboard(code);
+            setChecked(true);
+          }}
+        />
+      )}
+      <code
+        className="hljs rounded w-full"
+        dangerouslySetInnerHTML={{ __html: highlighted.value }}
+      />
+    </pre>
   );
 };
 
@@ -70,7 +99,7 @@ const InlineCode = ({ ...props }: JSX.IntrinsicElements["code"]) => {
   );
 };
 
-export const MDXComponents = {
+export const MDXComponents: Components = {
   p: P,
   strong: Strong,
   blockquote: Blockquote,
@@ -82,7 +111,8 @@ export const MDXComponents = {
   h3: H3,
   h4: H4,
   hr: Divider,
-  code: Code,
+  code: InlineCode,
+  pre: Pre,
   inlineCode: InlineCode,
   // table
   table: ({ ...props }) => (
