@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
 import { remarkMdxFrontmatter } from "remark-mdx-frontmatter";
@@ -7,6 +6,7 @@ import exportToProps from "./plugins/export-to-props.mjs";
 import rehypeSlug from "rehype-slug";
 // import remarkFrontmatter from 'remark-frontmatter'
 
+/** @type {import('next').NextConfig} */
 const config = {
   pageExtensions: ["tsx", "md", "mdx"],
   // reactStrictMode: true,
@@ -45,6 +45,9 @@ const config = {
     });
 
     return config;
+  },
+  images: {
+    domains: ["user-images.githubusercontent.com"],
   },
 };
 

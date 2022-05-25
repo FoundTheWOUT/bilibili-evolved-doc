@@ -7,7 +7,6 @@ import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css";
 import { Components } from "@mdx-js/react/lib";
 import { ClipboardIcon, ClipboardCheckIcon } from "@heroicons/react/solid";
-import Link from "next/link";
 
 const P = (p: JSX.IntrinsicElements["p"]) => (
   <p className="whitespace-pre-wrap my-4 dark:text-white" {...p} />
@@ -132,8 +131,15 @@ export const MDXComponents: Components = {
   ),
   img: ({ ...props }) => {
     return (
+      //   <Image
+      //   className="rounded-lg"
+      //   src={props.src!}
+      //   alt=""
+      //   height={200}
+      //   layout="fill"
+      // />
       <span className="flex m-2">
-        <img className="rounded-lg max-h-[60rem]" {...props} />
+        <img className="rounded-lg max-h-[60rem]" {...props} alt="" />
       </span>
     );
   },

@@ -1,4 +1,5 @@
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
+const axios = require("axios").default;
 // 替换 <remote /> 为 src 里内容
 
 let inHTMLBlock = false;
@@ -15,17 +16,11 @@ const normalizeContent = (content) =>
   content
     .split("\n")
     .map((line) => {
+      // TODO: end HTML tag.
       if (line.includes("<img")) return normalizeImgBlock(line);
 
-      if (line.includes("/style") || line.includes("/div")) {
-        inHTMLBlock = false;
-        return null;
-      }
-      if (inHTMLBlock) {
-        return null;
-      }
-      if (line.includes("style") || line.includes("div")) {
-        inHTMLBlock = true;
+      // remove HTML comment.
+      if (line.includes("<!--")) {
         return null;
       }
       return line;
@@ -51,7 +46,8 @@ const loader = async function (content) {
             if (res.length) {
               const url = `${res[0]}?spam=${Number(d)}`;
               console.log("fetching:", url);
-              text = await fetch(url).then((res) => res.text());
+              const { data } = await axios.get(url);
+              text = data;
             }
 
             return normalizeContent(text);
