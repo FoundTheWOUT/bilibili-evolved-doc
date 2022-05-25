@@ -1,7 +1,3 @@
----
-name: jack
----
-
 ## 安装
 
 需要浏览器装有 [Tampermonkey](https://tampermonkey.net/) 或 [Violentmonkey](https://violentmonkey.github.io/) 插件, 下方表格中挑一个链接安装.
@@ -12,8 +8,8 @@ name: jack
 - 新版本一旦正式发布, 就不再对旧版本做任何技术支持.
 - 使用外部网站的链接时(如将下载任务发送到自己的服务器 / 使用链接安装组件等)可能会提示"脚本试图访问跨域资源", 请选择"始终允许".
 - 可能无法很好地适应窄屏幕, 请尽量以 1400 x 800 以上的逻辑分辨率使用此脚本.
+- **⚠ 网络需要确保能够连接 cdn.jsdelivr.net, 如果使用 GitHub 更新源, 也需要能够连接 raw.githubusercontent.com (这两个目前都有墙**
 
-|          | 更新延迟 | 正式版                                                                                                  | 预览版                                                                                                           |
-| -------- | -------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| jsDelivr | 24h      | [安装](https://cdn.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/dist/bilibili-evolved.user.js)       | [安装](https://cdn.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/dist/bilibili-evolved.preview.user.js)       |
-| GitHub   | <1h      | [安装](https://raw.githubusercontent.com/the1812/Bilibili-Evolved/master/dist/bilibili-evolved.user.js) | [安装](https://raw.githubusercontent.com/the1812/Bilibili-Evolved/preview/dist/bilibili-evolved.preview.user.js) |
+|        | 更新延迟 | 正式版                                                                                                  | 预览版                                                                                                           |
+| ------ | -------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| GitHub | <1h      | [安装](https://raw.githubusercontent.com/the1812/Bilibili-Evolved/master/dist/bilibili-evolved.user.js) | [安装](https://raw.githubusercontent.com/the1812/Bilibili-Evolved/preview/dist/bilibili-evolved.preview.user.js) |

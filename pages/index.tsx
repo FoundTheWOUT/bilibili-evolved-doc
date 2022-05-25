@@ -45,8 +45,8 @@ const Home: NextPage = () => {
         <title>欢迎o(*￣▽￣*)ブ</title>
       </Head>
 
-      <div className="flex lg:px-32 pt-20">
-        <div className="h-full sticky top-20 hidden xl:block">
+      <div className="flex lg:px-32 pt-4">
+        <div className="h-full sticky top-4 hidden xl:block">
           <div
             className="absolute"
             style={{
@@ -87,9 +87,9 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-        <main className="flex-1">
+        <main className="flex-1 z-10">
           {/* page1 */}
-          <div className="h-[75vh] flex items-center justify-center flex-col">
+          <section className="h-screen flex items-center justify-center flex-col">
             <div className="flex flex-col">
               <span className="font-bold text-MAIN text-7xl">
                 BiliBili-Evolved
@@ -103,10 +103,10 @@ const Home: NextPage = () => {
                 </button>
               </Link>
             </div>
-          </div>
+          </section>
 
           {/* page2 */}
-          <div className="h-[100vh] w-full max-w-[40rem] flex items-center justify-center flex-col mx-auto">
+          <section className="h-screen w-full max-w-[40rem] flex items-center justify-center flex-col mx-auto">
             <span className="font-bold text-MAIN text-2xl mr-auto">我们有</span>
             <div className="w-full border-MAIN/30 border-b-2 my-4"></div>
             <div className="w-full grid gap-5 lg:grid-cols-2">
@@ -143,13 +143,13 @@ const Home: NextPage = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </section>
         </main>
       </div>
 
       {/* footer */}
-      <div className="h-[70vh] lg:mx-auto mt-56">
-        <div className="flex items-center justify-center flex-col max-w-7xl bg-[#F19953] rounded-lg mx-auto py-20">
+      <section className="h-screen lg:mx-auto mt-56">
+        <div className="translate-y-1/2 flex items-center justify-center flex-col max-w-7xl bg-[#F19953] rounded-lg mx-auto py-20">
           <span className="font-bold text-white text-4xl">社区支持</span>
           <Link href="/developer" passHref>
             <button className="mt-8 px-4 py-2 rounded-xl bg-[#EDF7F6] text-white shadow-lg shadow-[#F19953]/50 active:shadow-none transition-shadow">
@@ -163,8 +163,7 @@ const Home: NextPage = () => {
             alt=""
           />
         </div>
-      </div>
-      <div className="h-56 w-full"></div>
+      </section>
     </div>
   );
 };

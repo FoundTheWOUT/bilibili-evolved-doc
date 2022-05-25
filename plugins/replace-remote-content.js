@@ -1,3 +1,4 @@
+const fetch = require("node-fetch");
 // 替换 <remote /> 为 src 里内容
 
 let inHTMLBlock = false;
@@ -35,7 +36,8 @@ const normalizeContent = (content) =>
 const loader = async function (content) {
   const callback = this.async();
 
-  let result;
+  let result = "";
+  console.log("start replace remote content.");
   try {
     result = await Promise.all(
       content
@@ -61,7 +63,7 @@ const loader = async function (content) {
     );
     result = result.join("\n");
   } catch (err) {
-    return callback(err);
+    console.log("[replace-remote-content]: err,", err);
   }
 
   return callback(null, result);

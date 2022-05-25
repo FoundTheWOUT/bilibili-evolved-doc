@@ -24,7 +24,7 @@ const Item = ({
 
   return (
     <div
-      className={cn("px-4 py-2 my-1 rounded dark:text-white ", {
+      className={cn("px-4 py-2 my-1 rounded dark:text-white transition", {
         "hover:bg-sky-100 dark:hover:bg-opacity-25": selectable && !selected,
         "font-bold": level === 0,
         "ml-2": level === 1,
