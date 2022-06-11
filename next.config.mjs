@@ -3,6 +3,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import { remarkMdxFrontmatter } from "remark-mdx-frontmatter";
 import remarkExportHeading from "./plugins/remark-export-heading.mjs";
 import exportToProps from "./plugins/export-to-props.mjs";
+import remarkPathToRepo from "./plugins/remark-path-to-repo.mjs";
 import rehypeSlug from "rehype-slug";
 // import remarkFrontmatter from 'remark-frontmatter'
 
@@ -25,6 +26,7 @@ const config = {
               remarkFrontmatter,
               remarkMdxFrontmatter,
               remarkExportHeading,
+              remarkPathToRepo,
               // require("remark-frontmatter", ["yaml"]),
               // require("./plugins/remark-export-heading"),
               // require("./plugins/remark-yaml"),

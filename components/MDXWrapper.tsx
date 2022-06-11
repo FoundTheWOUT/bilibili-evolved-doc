@@ -53,7 +53,7 @@ export default function MDXWrapper(
 
             {/* context */}
             <div className="px-6 lg:flex lg:ml-80">
-              <div className="lg:w-4/5">
+              <div className="lg:w-4/5 overflow-hidden">
                 {props.children}
                 <Footer routerTree={routerTree} />
               </div>
