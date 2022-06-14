@@ -85,19 +85,18 @@ export default function Footer({ routerTree }: FooterProps) {
         )}
       </div>
       {/* footer */}
-      <footer className="border-t py-12 flex dark:text-white">
-        <div>Create at 2022</div>
-        <button
-          type="button"
-          className="ml-auto flex items-center"
-          onClick={() =>
-            window.open("https://github.com/FoundTheWOUT/bilibili-evolved-doc")
-          }
+      <footer className="border-t py-12 flex text-gray-500 items-end">
+        <div className="h-5">构建于 {process.env.buildAt?.slice(0, 10)}</div>
+        <a
+          href="https://github.com/FoundTheWOUT/bilibili-evolved-doc"
+          className="ml-auto flex items-end"
+          target="_blank"
+          rel="noreferrer"
         >
-          <span className="mr-2">文档地址</span>
+          <span className="mr-2 h-5">网站地址</span>
           <Image
-            width={24}
-            height={24}
+            width={20}
+            height={20}
             src={
               theme === Themes.DARK
                 ? "/icons/github-light.png"
@@ -105,7 +104,7 @@ export default function Footer({ routerTree }: FooterProps) {
             }
             alt="https://github.com/FoundTheWOUT/bilibili-evolved-doc"
           />
-        </button>
+        </a>
       </footer>
     </>
   );

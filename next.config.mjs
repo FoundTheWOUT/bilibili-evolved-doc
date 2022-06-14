@@ -10,6 +10,9 @@ import rehypeSlug from "rehype-slug";
 /** @type {import('next').NextConfig} */
 const config = {
   pageExtensions: ["tsx", "md", "mdx"],
+  env: {
+    buildAt: new Date().toISOString(),
+  },
   // reactStrictMode: true,
   webpack: (config, { dev, isServer, ...options }) => {
     config.module.rules.push({

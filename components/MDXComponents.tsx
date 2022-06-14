@@ -23,7 +23,7 @@ const LI = (p: JSX.IntrinsicElements["li"]) => (
   <li className="leading-relaxed mb-1 dark:text-white" {...p} />
 );
 const UL = (p: JSX.IntrinsicElements["ul"]) => (
-  <ul className="ml-6 my-3 list-disc dark:text-white" {...p} />
+  <ul className="ml-6 my-3 list-disc dark:text-white overflow-y-auto" {...p} />
 );
 
 const Divider = () => (

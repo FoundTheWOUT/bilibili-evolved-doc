@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import cn from "classnames";
@@ -61,15 +60,15 @@ const Home: NextPage = () => {
           ></div>
           <div className="relative">
             <img
-              className={cn("absolute top-5 rounded-lg transition-transform", {
-                "translate-x-40": theme == Themes.DARK,
+              className={cn("absolute top-5 rounded-lg transition opacity-0", {
+                "translate-x-40 opacity-100": theme == Themes.DARK,
               })}
               src="/images/index/bilibili-dark.png"
               alt=""
             />
             <img
               className={cn(
-                "rounded-xl transition h-[900px] origin-bottom-left",
+                "rounded-xl transition h-[90vh] origin-bottom-left object-contain",
                 {
                   "rotate-0": theme == Themes.LIGHT,
                   "-rotate-12": theme == Themes.DARK,
@@ -82,7 +81,6 @@ const Home: NextPage = () => {
               }
               alt="img"
               width={322}
-              height={916}
             />
           </div>
         </div>
@@ -152,7 +150,7 @@ const Home: NextPage = () => {
         <div className="translate-y-1/2 flex items-center justify-center flex-col max-w-7xl bg-[#F19953] rounded-lg mx-auto py-20">
           <span className="font-bold text-white text-4xl">社区支持</span>
           <Link href="/developer" passHref>
-            <button className="mt-8 px-4 py-2 rounded-xl bg-[#EDF7F6] text-white shadow-lg shadow-[#F19953]/50 active:shadow-none transition-shadow">
+            <button className="mt-8 px-4 py-2 rounded-xl bg-[#EDF7F6] text-white shadow-lg shadow-[#EDF7F6]/50 active:shadow-none transition-shadow">
               <span className="text-lg font-bold text-[#2660A4]">参与开发</span>
             </button>
           </Link>
