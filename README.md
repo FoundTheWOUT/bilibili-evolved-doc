@@ -1,15 +1,27 @@
 # Bilibili-Evolved 文档
 
----
+使用 [Next.js](https://nextjs.org/) 构建的 [Bilibili-Evolved](https://github.com/the1812/Bilibili-Evolved) 文档
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### 本地运行
 
-1. 安装依赖
+1. 克隆项目
+
+   ```
+   git clone https://github.com/FoundTheWOUT/bilibili-evolved-doc.git
+   ```
+
+2. 进入项目目录
+   ```
+   cd bilibili-evolved-doc
+   ```
+
+3. 安装依赖
 
    ```bash
    pnpm i
    ```
-2. 启动
+
+4. 启动
    ```bash
    pnpm dev
    ```
