@@ -95,7 +95,7 @@ const Home: NextPage = () => {
               <span className="font-bold text-lg mt-4 dark:text-white">
                 给你足够多，足够强大的功能
               </span>
-              <Link href="/user/install" passHref>
+              <Link href="docs/user/install" passHref>
                 <button className="mt-8 h-[60px] w-[120px] rounded-xl bg-MAIN text-white shadow-lg shadow-MAIN/50 active:shadow-none transition-shadow">
                   <span className="text-lg font-bold">立刻尝试</span>
                 </button>

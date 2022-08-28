@@ -1,14 +1,9 @@
 import Toc from "./Toc";
-import NavBar from "./NavBar";
-import type { TocHeader } from "./Toc";
-import { SideBar, SidebarProvider } from "./SideBar";
-import React, { PropsWithChildren } from "react";
-import sideBarUser from "constant/sidebar-user.json";
-import sideBarDeveloper from "constant/sidebar-developer.json";
-
 import Footer from "./Footer";
-import { useRouter } from "next/router";
 import Head from "next/head";
+import type { TocHeader } from "./Toc";
+import { useRouterTree } from "hooks/useRouterTree";
+import React, { PropsWithChildren } from "react";
 
 export interface RemarkHeading {
   id: string;
@@ -27,6 +22,8 @@ export default function MDXWrapper(
     meta: FrontMatter;
   }>
 ) {
+  console.log(props);
+  // TODO: get props hear
   const { headings, meta } = props;
   const headers: TocHeader[] =
     headings?.map((header) => ({
@@ -35,8 +32,7 @@ export default function MDXWrapper(
       text: header.title,
     })) ?? [];
 
-  const { pathname } = useRouter();
-  const routerTree = pathname.includes("user") ? sideBarUser : sideBarDeveloper;
+  const { tree: routerTree } = useRouterTree();
 
   return (
     <>
@@ -45,21 +41,13 @@ export default function MDXWrapper(
       </Head>
 
       <MDXFrontMatter.Provider value={meta}>
-        <div className="h-full max-w-[100rem] mx-auto">
-          <SidebarProvider>
-            <NavBar />
-
-            <SideBar routerTree={routerTree} />
-
-            {/* context */}
-            <div className="px-6 lg:flex lg:ml-80">
-              <div className="lg:w-4/5">
-                {props.children}
-                <Footer routerTree={routerTree} />
-              </div>
-              <Toc headers={headers} />
-            </div>
-          </SidebarProvider>
+        <div className="h-full max-w-[100rem] flex-1 mx-auto">
+          {/* context */}
+          <div className="lg:w-4/5">
+            {props.children}
+            <Footer routerTree={routerTree} />
+          </div>
+          <Toc headers={headers} />
         </div>
       </MDXFrontMatter.Provider>
     </>

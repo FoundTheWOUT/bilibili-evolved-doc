@@ -6,6 +6,7 @@ import DarkSwitch from "components/DarkSwitch";
 import Title from "components/Title";
 import cn from "classnames";
 import Search from "./Search";
+import { useMdxPath } from "hooks/useMdxPath";
 
 export interface RouteItem {
   title: string;
@@ -25,7 +26,7 @@ export const SidebarContext = React.createContext({
 });
 
 export const SideBar = ({ routerTree }: SideBarProps) => {
-  const { pathname: curPath } = useRouter();
+  const curPath = useMdxPath();
   const { hidden, hideSidebar } = React.useContext(SidebarContext);
 
   return (

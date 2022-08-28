@@ -7,6 +7,8 @@ import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css";
 import { Components } from "@mdx-js/react/lib";
 import { ClipboardIcon, ClipboardCheckIcon } from "@heroicons/react/solid";
+import MDXWrapper from "./MDXWrapper";
+// import SyntaxHighlighter from "react-syntax-highlighter";
 
 const P = (p: JSX.IntrinsicElements["p"]) => (
   <p className="whitespace-pre-wrap my-4 dark:text-white" {...p} />
@@ -54,7 +56,8 @@ const Blockquote = ({
 };
 
 const Pre = ({ children }: JSX.IntrinsicElements["pre"]) => {
-  const { children: code } = (children as any).props;
+  const { children: code, className } = (children as any).props;
+  // const match = /language-(\w+)/.exec(className || "");
   const highlighted = hljs.highlightAuto(code as string);
 
   const [checked, setChecked] = React.useState(false);
@@ -81,6 +84,7 @@ const Pre = ({ children }: JSX.IntrinsicElements["pre"]) => {
           }}
         />
       )}
+      {/* <SyntaxHighlighter PreTag="div" children={children} /> */}
       <code
         className="hljs rounded w-full"
         dangerouslySetInnerHTML={{ __html: highlighted.value }}
@@ -112,7 +116,6 @@ export const MDXComponents: Components = {
   hr: Divider,
   code: InlineCode,
   pre: Pre,
-  inlineCode: InlineCode,
   // table
   table: ({ ...props }) => (
     <table className="mx-auto my-8 dark:text-white" {...props} />
@@ -149,4 +152,5 @@ export const MDXComponents: Components = {
   summary: ({ ...props }) => (
     <summary className="dark:text-white cursor-pointer" {...props} />
   ),
+  wrapper: MDXWrapper,
 };
