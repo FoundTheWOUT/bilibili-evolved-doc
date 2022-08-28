@@ -1,4 +1,4 @@
-import visit from "unist-util-visit";
+import { visit } from "unist-util-visit";
 import Slugger from "github-slugger";
 import { valueToEstree } from "estree-util-value-to-estree";
 const slugger = new Slugger();

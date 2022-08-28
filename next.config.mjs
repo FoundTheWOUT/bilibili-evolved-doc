@@ -39,13 +39,13 @@ const config = {
               [
                 exportToProps,
                 `{
-              headings
-            }`,
+            headings
+          }`,
               ],
             ],
           },
         },
-        "./plugins/replace-remote-content.js",
+        "./loaders/replace-remote-content",
       ],
     });
 

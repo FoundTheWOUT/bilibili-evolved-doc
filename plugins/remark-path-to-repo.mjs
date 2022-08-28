@@ -1,4 +1,4 @@
-import visit from "unist-util-visit";
+import { visit } from "unist-util-visit";
 
 /**
  * @typedef {import('mdast').Root} Root - https://github.com/syntax-tree/mdast#root
