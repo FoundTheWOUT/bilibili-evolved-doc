@@ -58,6 +58,7 @@ const Blockquote = ({
 const Pre = ({ children }: JSX.IntrinsicElements["pre"]) => {
   const { children: code, className } = (children as any).props;
   // const match = /language-(\w+)/.exec(className || "");
+  // ! this really cause the performance problem
   const highlighted = hljs.highlightAuto(code as string);
 
   const [checked, setChecked] = React.useState(false);

@@ -18,6 +18,7 @@ const MDXPage = () => {
       <NavBar />
       <SideBar routerTree={routerTree} />
       <div className="px-6 lg:flex lg:ml-80">
+        {/* TODO: loading */}
         <Suspense fallback={<div>loading</div>}>
           <Comp components={MDXComponents} />
           {/* <MDXProvider components={_MDXComponents}>{children}</MDXProvider>; */}
