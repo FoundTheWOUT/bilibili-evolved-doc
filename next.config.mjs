@@ -2,10 +2,11 @@ import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
 import { remarkMdxFrontmatter } from "remark-mdx-frontmatter";
 import remarkExportHeading from "./plugins/remark-export-heading.mjs";
-import exportToProps from "./plugins/export-to-props.mjs";
+import recmakInjectProps from "./plugins/recma-lift-up-props.mjs";
 import remarkPathToRepo from "./plugins/remark-path-to-repo.mjs";
 import rehypeSlug from "rehype-slug";
-// import remarkFrontmatter from 'remark-frontmatter'
+import rehypeHighlight from "rehype-highlight";
+// import rehypeStaticProps from "./plugins/rehype-static-props.mjs";
 
 /** @type {import('next').NextConfig} */
 const config = {
@@ -30,19 +31,13 @@ const config = {
               remarkMdxFrontmatter,
               remarkExportHeading,
               remarkPathToRepo,
-              // require("remark-frontmatter", ["yaml"]),
-              // require("./plugins/remark-export-heading"),
-              // require("./plugins/remark-yaml"),
             ],
             rehypePlugins: [
+              rehypeHighlight,
               rehypeSlug,
-              [
-                exportToProps,
-                `{
-            headings
-          }`,
-              ],
+              // [rehypeStaticProps, `{headings}`],
             ],
+            recmaPlugins: [[recmakInjectProps, ["headings"]]],
           },
         },
         "./loaders/replace-remote-content",
