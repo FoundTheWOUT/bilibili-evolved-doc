@@ -53,9 +53,13 @@ export default function plugin() {
 
     visit(tree, "heading", visitor);
 
+    /**
+     * equivalence to
+     *
+     * export const headings = [...]
+     */
     const tocExport = {
       type: "mdxjsEsm",
-      value: "",
       data: {
         estree: {
           type: "Program",
