@@ -33,5 +33,12 @@ export default {
         suspense: true,
       }) as typeof MDXProvider,
     },
+    {
+      title: "CDN",
+      path: "/docs/developer/cdn",
+      Comp: dynamic(() => import("/docs/developer/cdn.md"), {
+        suspense: true,
+      }) as typeof MDXProvider,
+    },
   ],
 };

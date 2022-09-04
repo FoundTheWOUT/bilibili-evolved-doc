@@ -5,6 +5,7 @@ import { SideBar, SidebarProvider } from "components/SideBar";
 import NavBar from "components/NavBar";
 import { useRouterTree } from "hooks/useRouterTree";
 import Loading from "components/Loading";
+import Error from "next/error";
 
 const MDXPage = () => {
   const path = useMdxPath();
@@ -12,7 +13,7 @@ const MDXPage = () => {
 
   const { tree: routerTree, getNode } = useRouterTree();
   const Comp = getNode(path)?.Comp;
-  if (!Comp) return null;
+  if (!Comp) return <Error statusCode={404} />;
 
   return (
     <SidebarProvider>
