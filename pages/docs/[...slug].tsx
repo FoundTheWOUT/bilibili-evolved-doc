@@ -9,11 +9,10 @@ import Error from "next/error";
 
 const MDXPage = () => {
   const path = useMdxPath();
-  if (!path) return null;
-
   const { tree: routerTree, getNode } = useRouterTree();
   const Comp = getNode(path)?.Comp;
-  if (!Comp) return <Error statusCode={404} />;
+
+  if (!path || !Comp) return <Error statusCode={404} />;
 
   return (
     <SidebarProvider>
