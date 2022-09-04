@@ -1,10 +1,10 @@
 import React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import type { RouteItem } from "./SideBar";
-import { useRouter } from "next/router";
 import Linkable from "./HOC/Linkable";
 import Image from "next/image";
 import { Themes, useTheme } from "./ThemeProvider";
+import { useMdxPath } from "hooks/useMdxPath";
 
 interface FooterProps {
   routerTree: RouteItem;
@@ -51,7 +51,7 @@ const searchPreAndNextInRouterTree = (
 };
 
 export default function Footer({ routerTree }: FooterProps) {
-  const { pathname } = useRouter();
+  const pathname = useMdxPath();
   const { nextRoute, prevRoute } = searchPreAndNextInRouterTree(
     routerTree,
     pathname

@@ -3,14 +3,14 @@
 - 需要安装 [Node.js](https://nodejs.org/en/download/) (>= 14.0), [Visual Studio Code](https://code.visualstudio.com/) 和 [yarn](https://yarnpkg.com/getting-started/install#global-install).
 - 将项目 Fork 至自己账户后, 克隆至本地
 
-```powershell
+```
 git clone https://github.com/{{your-name}}/Bilibili-Evolved.git -b preview --single-branch
 cd Bilibili-Evolved
 ```
 
 - 安装依赖
 
-```powershell
+```
 yarn
 cd registry
 yarn
@@ -80,7 +80,7 @@ yarn
 // @require file://C:/xxx/Bilibili-Evolved/bilibili-evolved.dev.user.js
 ```
 
-   - macOS 例子:
+- macOS 例子:
 
 ```js
 // @require file:///path/to/bilibili-evolved.dev.user.js

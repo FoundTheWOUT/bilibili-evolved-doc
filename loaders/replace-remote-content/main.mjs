@@ -46,7 +46,7 @@ const normalizeContent = (content) =>
  * @returns
  */
 export async function loader(content, callback) {
-  console.log(content);
+  // console.log(content);
   // return remark().processSync(content).toString();
 
   Promise.all(

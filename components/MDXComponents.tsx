@@ -3,7 +3,6 @@
 
 import * as React from "react";
 import { H1, H2, H3, H4 } from "./Heading";
-import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css";
 import { Components } from "@mdx-js/react/lib";
 import { ClipboardIcon, ClipboardCheckIcon } from "@heroicons/react/solid";
@@ -56,40 +55,36 @@ const Blockquote = ({
 };
 
 const Pre = ({ children }: JSX.IntrinsicElements["pre"]) => {
-  const { children: code, className } = (children as any).props;
-  // const match = /language-(\w+)/.exec(className || "");
-  // ! this really cause the performance problem
-  const highlighted = hljs.highlightAuto(code as string);
-
   const [checked, setChecked] = React.useState(false);
   const handleClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     // TODO: notify.
   };
 
+  // TODO: clipboard
   return (
     <pre className="relative w-full my-2">
       {checked ? (
         <ClipboardCheckIcon
-          className="w-5 absolute right-0 text-white m-2 cursor-pointer"
+          className="w-5 absolute right-0 text-emerald-500 m-2 cursor-pointer"
           onClick={() => {
-            handleClipboard(code);
+            // handleClipboard(code);
           }}
         />
       ) : (
         <ClipboardIcon
           className="w-5 absolute right-0 text-white m-2 cursor-pointer"
           onClick={() => {
-            handleClipboard(code);
+            // handleClipboard(code);
             setChecked(true);
           }}
         />
       )}
-      {/* <SyntaxHighlighter PreTag="div" children={children} /> */}
-      <code
+      {/* <code
         className="hljs rounded w-full"
         dangerouslySetInnerHTML={{ __html: highlighted.value }}
-      />
+      /> */}
+      <code className="hljs rounded w-full">{children}</code>
     </pre>
   );
 };

@@ -4,6 +4,7 @@ import { useMdxPath } from "hooks/useMdxPath";
 import { SideBar, SidebarProvider } from "components/SideBar";
 import NavBar from "components/NavBar";
 import { useRouterTree } from "hooks/useRouterTree";
+import Loading from "components/Loading";
 
 const MDXPage = () => {
   const path = useMdxPath();
@@ -18,10 +19,14 @@ const MDXPage = () => {
       <NavBar />
       <SideBar routerTree={routerTree} />
       <div className="px-6 lg:flex lg:ml-80">
-        {/* TODO: loading */}
-        <Suspense fallback={<div>loading</div>}>
+        <Suspense
+          fallback={
+            <div className="h-[90vh] w-full flex justify-center items-center">
+              <Loading className="h-20 text-MAIN" />
+            </div>
+          }
+        >
           <Comp components={MDXComponents} />
-          {/* <MDXProvider components={_MDXComponents}>{children}</MDXProvider>; */}
         </Suspense>
       </div>
     </SidebarProvider>
