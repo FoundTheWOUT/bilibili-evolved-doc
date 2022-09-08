@@ -1,3 +1,3 @@
-[submodule "rehype-highlight"]
+[submodule "plugins/rehype-highlight"]
 	path = plugins/rehype-highlight
 	url = https://github.com/rehypejs/rehype-highlight.git
