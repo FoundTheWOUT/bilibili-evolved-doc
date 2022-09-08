@@ -4,8 +4,8 @@ import { remarkMdxFrontmatter } from "remark-mdx-frontmatter";
 import remarkExportHeading from "./plugins/remark-export-heading.mjs";
 import recmakInjectProps from "./plugins/recma-lift-up-props.mjs";
 import remarkPathToRepo from "./plugins/remark-path-to-repo.mjs";
+import rehypeHighlight from "./plugins/rehype-highlight.mjs";
 import rehypeSlug from "rehype-slug";
-import rehypeHighlight from "./plugins/rehype-highlight/index.js";
 // import rehypeStaticProps from "./plugins/rehype-static-props.mjs";
 
 /** @type {import('next').NextConfig} */
