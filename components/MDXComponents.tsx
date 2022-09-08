@@ -55,35 +55,31 @@ const Blockquote = ({
 };
 
 const Pre = ({ children }: JSX.IntrinsicElements["pre"]) => {
+  const plainText = (children as any)?.[1]?.props?.children;
   const [checked, setChecked] = React.useState(false);
   const handleClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     // TODO: notify.
   };
 
-  // TODO: clipboard
   return (
     <pre className="relative w-full my-2">
       {checked ? (
         <ClipboardCheckIcon
           className="w-5 absolute right-0 text-emerald-500 m-2 cursor-pointer"
           onClick={() => {
-            // handleClipboard(code);
+            handleClipboard(plainText);
           }}
         />
       ) : (
         <ClipboardIcon
           className="w-5 absolute right-0 text-white m-2 cursor-pointer"
           onClick={() => {
-            // handleClipboard(code);
+            handleClipboard(plainText);
             setChecked(true);
           }}
         />
       )}
-      {/* <code
-        className="hljs rounded w-full"
-        dangerouslySetInnerHTML={{ __html: highlighted.value }}
-      /> */}
       <code className="hljs rounded w-full">{children}</code>
     </pre>
   );

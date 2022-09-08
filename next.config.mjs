@@ -5,7 +5,7 @@ import remarkExportHeading from "./plugins/remark-export-heading.mjs";
 import recmakInjectProps from "./plugins/recma-lift-up-props.mjs";
 import remarkPathToRepo from "./plugins/remark-path-to-repo.mjs";
 import rehypeSlug from "rehype-slug";
-import rehypeHighlight from "rehype-highlight";
+import rehypeHighlight from "./plugins/rehype-highlight/index.js";
 // import rehypeStaticProps from "./plugins/rehype-static-props.mjs";
 
 /** @type {import('next').NextConfig} */
