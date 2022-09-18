@@ -3,15 +3,15 @@
  * Author: FoundTheWOUT
  * */
 
-import { parseFragment } from "parse5";
 import { remark } from "remark";
 import { visit } from "unist-util-visit";
 import { toHtml } from "hast-util-to-html";
-import { fromParse5 } from "hast-util-from-parse5";
+import { fromHtml } from "hast-util-from-html";
+import { fromMarkdown } from "mdast-util-from-markdown";
 import { remove } from "unist-util-remove";
 import fetch from "node-fetch";
 
-function normalizeHTML(tree) {
+const normalizeHTML = (tree) => {
   tree = remove(tree, { tagName: "style" });
   if (!tree) return;
   tree = remove(tree, { type: "comment" });
@@ -19,58 +19,168 @@ function normalizeHTML(tree) {
   return toHtml(tree, {
     closeSelfClosing: true,
   });
-}
+};
 
-function normalizeContentPlugin() {
-  return function (tree) {
-    visit(tree, "html", (node) => {
-      node.value = normalizeHTML(fromParse5(parseFragment(node.value))) ?? "";
+const normalizeContentPlugin = () => {
+  return (tree) => {
+    visit(tree, (node) => {
+      if (node.type == "html") {
+        node.value =
+          normalizeHTML(fromHtml(node.value, { fragment: true })) ?? "";
+      }
+      if (node.type == "code" && node.lang == "powershell") {
+        node.lang = "shell";
+      }
     });
   };
-}
+};
 
-/**
- *
- * @param {string} content - .md file
- * @returns
- */
-const normalizeContent = (content) =>
-  remark().use(normalizeContentPlugin).processSync(content).toString();
+const findAndExpand = (tree, replacers) => {
+  if (!Array.isArray(replacers)) {
+    throw Error("replacers should be a array");
+  }
+  replacers.forEach(([type, replaceFunction]) => {
+    visit(tree, type, (node, index, parent) => {
+      const nodes = replaceFunction(node);
+      if (Array.isArray(nodes)) {
+        parent.children.splice(index, 1, ...nodes);
+      }
+    });
+  });
+};
 
-// TODO:
-// function fetchContentPlugin(){}
+const handleSectionSelect = (tree, options) => {
+  if (options.section.length == 0) return tree;
+  let depth = -1; // depth != -1 meaning should retained the node.
+  let index = 0;
+  while (index < tree.children.length) {
+    // select the current node
+    const node = tree.children[index];
+    switch (node.type) {
+      case "heading":
+        /**
+         * for example, a md:
+         * ### Foo <- selected section
+         * Bar
+         * ## Jack <- drop content from here
+         * 19
+         */
+        if (depth !== -1 && node.depth <= depth) {
+          depth = -1;
+        }
+        for (let child of node.children) {
+          if (options.section.includes(child.value)) {
+            depth = node.depth; // record the depth
+            index++;
+          } else if (depth !== -1) {
+            index++;
+          } else {
+            tree.children.splice(index, 1);
+          }
+        }
+        break;
+      default:
+        if (depth == -1) {
+          // if not collecting item, remove it from children directly.
+          tree.children.splice(index, 1);
+        } else {
+          index++;
+        }
+        break;
+    }
+  }
+  return tree;
+};
+
+const fetchContentPlugin = (options) => {
+  const { section, dry } = options;
+  const cache = new Map();
+  return async (tree) => {
+    if (dry && section) {
+      handleSectionSelect(tree, options);
+      return;
+    }
+    const promises = [];
+    let preFragmentLength = 0;
+    // 1. select mdxJsxFlowElement type, and get content from url.
+    visit(tree, "html", (node, offset, parent) => {
+      // mdast -> hast for later use
+      const hast = fromHtml(node.value, { fragment: true });
+      if (
+        hast.children &&
+        hast.children[0] &&
+        hast.children[0].tagName == "remote"
+      ) {
+        const hastNode = hast.children[0];
+        let url = null;
+        let sections = [];
+        for (let [attrName, value] of Object.entries(hastNode.properties)) {
+          if (attrName == "src") {
+            url = value;
+          }
+          if (/section/g.test(attrName)) {
+            sections.push(value);
+          }
+        }
+        if (url) {
+          promises.push(() => {
+            console.log("fetching:", url);
+            const encodedUrl = encodeURI(url);
+            const cacheContent = cache.get(encodedUrl);
+            let _p = null;
+            if (cacheContent) {
+              console.log("url:", url, "hit cache!");
+              _p = Promise.resolve(cacheContent);
+            } else {
+              _p = fetch(url)
+                .then((res) => res.text())
+                .then((text) => {
+                  cache.set(encodedUrl, text);
+                  return text;
+                });
+            }
+
+            return _p
+              .then((text) => fromMarkdown(text))
+              .then((mdast) =>
+                handleSectionSelect(mdast, { section: sections })
+              )
+              .then((mdast) => {
+                parent.children.splice(
+                  offset + preFragmentLength,
+                  1,
+                  ...mdast.children
+                );
+                preFragmentLength += mdast.children.length - 1;
+              });
+          });
+        }
+      }
+    });
+
+    for (let p of promises) {
+      try {
+        await p();
+      } catch (error) {
+        throw Error(error);
+      }
+    }
+  };
+};
 
 /**
  *
  * @param {string} content - .mdx or .md file
+ * @param {(_:undefined,value:string)=>void} callback
+ * @param {{dry:boolean}|undefined}options - when passing the dry options, the loader would not find <remote>, but treat it like a file which after fetching content from url.
  * @returns
  */
-export async function loader(content, callback) {
-  // console.log(content);
-  // return remark().processSync(content).toString();
-
-  Promise.all(
-    content.split("\n").map(async (line) => {
-      if (line.includes("remote")) {
-        const reg = new RegExp(/(?<=src=").+(?="\s*)/g);
-        let res = reg.exec(line);
-        if (res.length) {
-          const url = res[0];
-          console.log("fetching:", url);
-          return fetch(url)
-            .then((res) => res.text())
-            .then((text) => {
-              // console.log(text);
-              return normalizeContent(text);
-            });
-        }
-        return Promise.resolve(line);
-      } else {
-        return Promise.resolve(line);
-      }
-    })
-  ).then((res) => {
-    // result = res.join("\n");
-    callback(null, res.join("\n"));
-  });
+export async function loader(content, callback, options) {
+  remark()
+    .use(fetchContentPlugin, options)
+    .use(normalizeContentPlugin)
+    .process(content)
+    .then((res) => {
+      callback(null, res.toString());
+    });
 }
