@@ -25,8 +25,8 @@ const normalizeContentPlugin = () => {
   return (tree) => {
     visit(tree, (node) => {
       if (node.type == "html") {
-        node.value =
-          normalizeHTML(fromHtml(node.value, { fragment: true })) ?? "";
+        const tree = fromHtml(node.value, { fragment: true }) ?? "";
+        node.value = normalizeHTML(tree);
       }
       if (node.type == "code" && node.lang == "powershell") {
         node.lang = "shell";
@@ -92,7 +92,7 @@ const handleSectionSelect = (tree, options) => {
   return tree;
 };
 
-const fetchContentPlugin = (options) => {
+const fetchContentPlugin = (options = {}) => {
   const { section, dry } = options;
   const cache = new Map();
   return async (tree) => {
