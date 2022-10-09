@@ -48,7 +48,7 @@ export default function Toc({ headers }: TocProps) {
     return () => {
       document.removeEventListener("scroll", handleDocumentScroll);
     };
-  }, []);
+  }, [headers.length]);
 
   return (
     <div className="ml-4 text-sm hidden xl:block">

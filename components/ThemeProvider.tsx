@@ -53,7 +53,7 @@ export const ThemeProvider = ({ children }: ThemeProps) => {
   useEffect(() => {
     window.__set_theme_dark = () => setThemeMode(Themes.DARK);
     window.__set_theme_light = () => setThemeMode(Themes.LIGHT);
-  }, []);
+  });
 
   return (
     <ThemeContext.Provider
