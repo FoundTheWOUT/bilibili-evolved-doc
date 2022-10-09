@@ -1,6 +1,4 @@
 import remarkGfm from "remark-gfm";
-import remarkFrontmatter from "remark-frontmatter";
-import { remarkMdxFrontmatter } from "remark-mdx-frontmatter";
 import remarkExportHeading from "./plugins/remark-export-heading.mjs";
 import recmakInjectProps from "./plugins/recma-lift-up-props.mjs";
 import remarkPathToRepo from "./plugins/remark-path-to-repo.mjs";
@@ -25,13 +23,7 @@ const config = {
           loader: "@mdx-js/loader",
           options: {
             providerImportSource: "@mdx-js/react",
-            remarkPlugins: [
-              remarkGfm,
-              remarkFrontmatter,
-              remarkMdxFrontmatter,
-              remarkExportHeading,
-              remarkPathToRepo,
-            ],
+            remarkPlugins: [remarkGfm, remarkExportHeading, remarkPathToRepo],
             rehypePlugins: [
               rehypeHighlight,
               rehypeSlug,
@@ -47,7 +39,7 @@ const config = {
     return config;
   },
   images: {
-    domains: ["user-images.githubusercontent.com"],
+    domains: ["user-images.githubusercontent.com", "cdn.jsdelivr.net"],
   },
 };
 
