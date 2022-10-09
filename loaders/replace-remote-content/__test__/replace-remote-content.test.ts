@@ -1,6 +1,9 @@
-import { loader } from "loaders/replace-remote-content/main.mjs";
+import { loader } from "../main.mjs";
 // const replaceRemoteContent = (content) => content;
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeAll } from "vitest";
+import { readFile } from "fs/promises";
+import handler from "serve-handler";
+import { createServer } from "http";
 const __replaceFun = (
   template: string,
   options?: { dry: boolean; section: string[] }
@@ -16,6 +19,27 @@ const __replaceFun = (
   });
 
 // first, host
+const TEST_PORT = 5500;
+beforeAll(async () => {
+  const server = createServer((request, response) => {
+    return handler(request, response, {
+      // ! fix the path
+      rewrites: [
+        {
+          source: "__test__/:name",
+          destination: "loaders/replace-remote-content/__test__/:name",
+        },
+      ],
+    });
+  });
+  server.listen(TEST_PORT, () => {
+    console.log(`Running at http://localhost:${TEST_PORT}`);
+  });
+
+  return async () => {
+    server.close();
+  };
+});
 
 describe("Unit Test replace RemoteContent", () => {
   it("can fetch remote content", async () => {
@@ -146,5 +170,34 @@ https://cdn.jsdelivr.net/gh/the1812/Bilibili-Evolved@v2/registry/dist/components
 
 well into March. Weather permitting, Grandad always started tapping on Washington's Birthday. The sugaring season, as we called it, required thawing days and freezing nights to allow the sap to flow. Rain spoiled the sap and wind dried up the tap holes so it was a fair-weather industry. Grandad hand-drilled his tap holes using a No. 8 wood bit, drilling about 1/2 inch deep into the vein of a sugar maple tree. Into this hole, a wood spile would then be tapped and after drilling another, a pail was hung to collect the sap as it steadily dripped from the spile. The wooden spiles were about eight inches in length and three-quarters of an inch in diameter. Ours were made from elderberry as that scrub has a soft center that could be cleaned out to make a tube. Our maple grove was along the brook and the edge of the field about a have mile up from the house. There were approximately 200 sugar maples large enough to tap on Grandad's farm and the scars on the trunks of many of the older trees indicated the number of years they had been supplying sap.
 `);
+  });
+
+  it("should return mdx properly", async () => {
+    const mdx = (
+      await readFile("loaders/replace-remote-content/__test__/example.mdx")
+    ).toString();
+    const res = await __replaceFun(mdx);
+    expect(res).eq(`import Comp from "./Comp";
+
+<Comp />
+
+<Comp>123</Comp>
+
+## h2
+
+body
+`);
+  });
+
+  it("html image self close", async () => {
+    const template = `<remote src="http://127.0.0.1:5500/__test__/image-self-close.md"/>`;
+    const res = await __replaceFun(template);
+    expect(res).not.empty;
+  });
+
+  it("should remove html comment", async () => {
+    const template = `<remote src="http://127.0.0.1:5500/__test__/html-comment.md"/>`;
+    const res = await __replaceFun(template);
+    expect(res).eq('\n\n');
   });
 });

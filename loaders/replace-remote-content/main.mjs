@@ -11,6 +11,18 @@ import { fromMarkdown } from "mdast-util-from-markdown";
 import { remove } from "unist-util-remove";
 import fetch from "node-fetch";
 
+// TODO, check valid jsx.
+const isJsx = (node) => {
+  // if is tsx component, should not handle it.
+  if (
+    node.value[0] == "<" &&
+    (/[A-Z]/.test(node.value[1]) || /[A-Z]/.test(node.value[2]))
+  ) {
+    return true;
+  }
+  return false;
+};
+
 const normalizeHTML = (tree) => {
   tree = remove(tree, { tagName: "style" });
   if (!tree) return;
@@ -25,6 +37,7 @@ const normalizeContentPlugin = () => {
   return (tree) => {
     visit(tree, (node) => {
       if (node.type == "html") {
+        if (isJsx(node)) return;
         const tree = fromHtml(node.value, { fragment: true }) ?? "";
         node.value = normalizeHTML(tree);
       }
@@ -33,20 +46,6 @@ const normalizeContentPlugin = () => {
       }
     });
   };
-};
-
-const findAndExpand = (tree, replacers) => {
-  if (!Array.isArray(replacers)) {
-    throw Error("replacers should be a array");
-  }
-  replacers.forEach(([type, replaceFunction]) => {
-    visit(tree, type, (node, index, parent) => {
-      const nodes = replaceFunction(node);
-      if (Array.isArray(nodes)) {
-        parent.children.splice(index, 1, ...nodes);
-      }
-    });
-  });
 };
 
 const handleSectionSelect = (tree, options) => {
@@ -105,6 +104,7 @@ const fetchContentPlugin = (options = {}) => {
     // 1. select mdxJsxFlowElement type, and get content from url.
     visit(tree, "html", (node, offset, parent) => {
       // mdast -> hast for later use
+      if (isJsx(node)) return;
       const hast = fromHtml(node.value, { fragment: true });
       if (
         hast.children &&

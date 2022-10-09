@@ -88,6 +88,6 @@ export default function plugin() {
         },
       },
     };
-    tree.children.unshift(tocExport);
+    tree.children.push(tocExport);
   };
 }
