@@ -93,7 +93,7 @@ const Home: NextPage = () => {
               <span className="font-bold text-lg mt-4 dark:text-white">
                 给你足够多，足够强大的功能
               </span>
-              <Link href="docs/user/install" passHref>
+              <Link href="/docs/user/install">
                 <a className="flex-center mt-8 h-[60px] w-[120px] rounded-xl bg-MAIN shadow-lg shadow-MAIN/50 active:shadow-none transition-shadow text-lg font-bold text-white">
                   立刻尝试
                 </a>
@@ -147,10 +147,14 @@ const Home: NextPage = () => {
       <section className="h-screen lg:mx-auto mt-56">
         <div className="translate-y-1/2 flex-center flex-col max-w-7xl bg-[#F19953] rounded-lg mx-auto py-20">
           <span className="font-bold text-white text-4xl">社区支持</span>
-          <Link href="/developer" passHref>
-            <button className="mt-8 px-4 py-2 rounded-xl bg-[#EDF7F6] text-white shadow-lg shadow-[#EDF7F6]/50 active:shadow-none transition-shadow">
-              <span className="text-lg font-bold text-[#2660A4]">参与开发</span>
-            </button>
+          <Link href="/docs/developer">
+            <a
+              className="mt-8 px-4 py-2 rounded-xl 
+            bg-[#EDF7F6] shadow-lg shadow-[#EDF7F6]/50 active:shadow-none transition-shadow
+              text-lg font-bold text-[#2660A4]"
+            >
+              参与开发
+            </a>
           </Link>
           {/* TODO: replace with Github API */}
           <img

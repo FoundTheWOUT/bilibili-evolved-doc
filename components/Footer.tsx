@@ -64,10 +64,10 @@ export default function Footer({ routerTree }: FooterProps) {
         {prevRoute && (
           <div className="group">
             {Linkable(
-              <div className="flex items-center h-full">
+              <a className="flex items-center h-full">
                 <ChevronLeftIcon className="h-5 text-sky-200 group-hover:text-sky-500" />
                 <span className="flex-nowrap">{prevRoute.title}</span>
-              </div>,
+              </a>,
               prevRoute
             )}
           </div>
@@ -75,10 +75,10 @@ export default function Footer({ routerTree }: FooterProps) {
         {nextRoute && (
           <div className="ml-auto group">
             {Linkable(
-              <div className="flex items-center h-full">
+              <a className="flex items-center h-full">
                 {nextRoute.title}
                 <ChevronRightIcon className="h-5 text-sky-200 group-hover:text-sky-500" />
-              </div>,
+              </a>,
               nextRoute
             )}
           </div>

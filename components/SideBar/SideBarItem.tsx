@@ -9,22 +9,25 @@ interface SideBarItemProps {
   level: number;
 }
 
+interface ItemProps {
+  title: string;
+  level: number;
+  selected?: boolean;
+  selectable?: boolean;
+  href?: string;
+}
+
 const Item = ({
   title,
   level,
   selected,
   selectable = true,
-}: {
-  title: string;
-  level: number;
-  selected?: boolean;
-  selectable?: boolean;
-}) => {
+  ...rest
+}: ItemProps) => {
   const { hideSidebar } = useContext(SidebarContext);
-
   return (
-    <div
-      className={cn("px-4 py-2 my-1 rounded dark:text-white transition", {
+    <a
+      className={cn("px-4 py-2 my-1 rounded dark:text-white transition block", {
         "hover:bg-sky-100 dark:hover:bg-opacity-25": selectable && !selected,
         "font-bold": level === 0,
         "ml-2": level === 1,
@@ -32,9 +35,10 @@ const Item = ({
         "bg-sky-200 dark:bg-sky-700 text-sky-700 dark:text-sky-200": selected,
       })}
       onClick={() => hideSidebar()}
+      {...rest}
     >
       {title}
-    </div>
+    </a>
   );
 };
 
