@@ -12,7 +12,7 @@ import { remove } from "unist-util-remove";
 import fetch from "node-fetch";
 
 // TODO, check valid jsx.
-const isJsx = (node) => {
+const isJsxNode = (node) => {
   // if is tsx component, should not handle it.
   if (
     node.value[0] == "<" &&
@@ -37,7 +37,7 @@ const normalizeContentPlugin = () => {
   return (tree) => {
     visit(tree, (node) => {
       if (node.type == "html") {
-        if (isJsx(node)) return;
+        if (isJsxNode(node)) return;
         const tree = fromHtml(node.value, { fragment: true }) ?? "";
         node.value = normalizeHTML(tree);
       }
@@ -102,9 +102,9 @@ const fetchContentPlugin = (options = {}) => {
     const promises = [];
     let preFragmentLength = 0;
     // 1. select mdxJsxFlowElement type, and get content from url.
+    // mdast -> hast for later use
     visit(tree, "html", (node, offset, parent) => {
-      // mdast -> hast for later use
-      if (isJsx(node)) return;
+      if (isJsxNode(node)) return;
       const hast = fromHtml(node.value, { fragment: true });
       if (
         hast.children &&
