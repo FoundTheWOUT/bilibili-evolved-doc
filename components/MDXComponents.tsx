@@ -7,6 +7,7 @@ import "highlight.js/styles/github-dark.css";
 import { Components } from "@mdx-js/react/lib";
 import { ClipboardIcon, ClipboardCheckIcon } from "@heroicons/react/solid";
 import MDXWrapper from "./MDXWrapper";
+import Link from "next/link";
 // import SyntaxHighlighter from "react-syntax-highlighter";
 
 const P = (p: JSX.IntrinsicElements["p"]) => (
@@ -121,9 +122,24 @@ export const MDXComponents: Components = {
   td: ({ ...props }) => (
     <td className="border border-sky-700 px-4 py-2" {...props} />
   ),
-  a: ({ ...props }) => (
-    <a className="text-sky-500 hover:text-sky-700" {...props}></a>
-  ),
+  a: ({ href, ...props }) => {
+    if (!href?.startsWith("http")) {
+      return (
+        <Link href={href!}>
+          <a className="text-sky-500 hover:text-sky-700" {...props} />
+        </Link>
+      );
+    }
+    return (
+      <a
+        className="text-sky-500 hover:text-sky-700"
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        {...props}
+      ></a>
+    );
+  },
   img: ({ ...props }) => {
     return (
       //   <Image

@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import Head from "next/head";
 import type { TocHeader } from "./Toc";
 import { useRouterTree } from "hooks/useRouterTree";
-import React, { PropsWithChildren, useEffect, useState } from "react";
+import React, { PropsWithChildren } from "react";
 
 export interface RemarkHeading {
   id: string;
