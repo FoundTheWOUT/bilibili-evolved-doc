@@ -12,11 +12,11 @@ const slugger = new Slugger();
  * @author https://github.com/expo/expo
  */
 
-export default function plugin() {
+export default function plugin({ headings }) {
   slugger.reset();
   /** @param {Root} tree */
   return (tree) => {
-    const headings = [];
+    // const headings = [];
 
     /** @param {Heading} node -  */
     const parseNodeToSting = (node) => {
@@ -58,36 +58,36 @@ export default function plugin() {
      *
      * export const headings = [...]
      */
-    const tocExport = {
-      type: "mdxjsEsm",
-      data: {
-        estree: {
-          type: "Program",
-          sourceType: "module",
-          body: [
-            {
-              type: "ExportNamedDeclaration",
-              specifiers: [],
-              source: null,
-              declaration: {
-                type: "VariableDeclaration",
-                kind: "const",
-                declarations: [
-                  {
-                    type: "VariableDeclarator",
-                    id: {
-                      type: "Identifier",
-                      name: "headings",
-                    },
-                    init: valueToEstree(headings),
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      },
-    };
-    tree.children.push(tocExport);
+    // const tocExport = {
+    //   type: "mdxjsEsm",
+    //   data: {
+    //     estree: {
+    //       type: "Program",
+    //       sourceType: "module",
+    //       body: [
+    //         {
+    //           type: "ExportNamedDeclaration",
+    //           specifiers: [],
+    //           source: null,
+    //           declaration: {
+    //             type: "VariableDeclaration",
+    //             kind: "const",
+    //             declarations: [
+    //               {
+    //                 type: "VariableDeclarator",
+    //                 id: {
+    //                   type: "Identifier",
+    //                   name: "headings",
+    //                 },
+    //                 init: valueToEstree(headings),
+    //               },
+    //             ],
+    //           },
+    //         },
+    //       ],
+    //     },
+    //   },
+    // };
+    // tree.children.push(tocExport);
   };
 }

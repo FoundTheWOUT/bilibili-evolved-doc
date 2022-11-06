@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import type { NextPage } from "next";
+import type { NextPage, GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
 import cn from "classnames";
 import { Themes, useTheme } from "components/ThemeProvider";
+import { Octokit } from "octokit";
 const tabs = [
   {
     title: "自由组合",
@@ -32,6 +33,7 @@ const tabs = [
   },
 ];
 const Home: NextPage = () => {
+  // console.log(collaborators);
   const [activeTab, setTab] = useState(0);
   const [activeImage, setActiveImage] = useState(0);
   const { theme, setDarkMode, setLightMode } = useTheme();
@@ -93,7 +95,7 @@ const Home: NextPage = () => {
               <span className="font-bold text-lg mt-4 dark:text-white">
                 给你足够多，足够强大的功能
               </span>
-              <Link href="/docs/user/install">
+              <Link href="/docs/user/install" legacyBehavior>
                 <a className="flex-center mt-8 h-[60px] w-[120px] rounded-xl bg-MAIN shadow-lg shadow-MAIN/50 active:shadow-none transition-shadow text-lg font-bold text-white">
                   立刻尝试
                 </a>
@@ -147,7 +149,7 @@ const Home: NextPage = () => {
       <section className="h-screen lg:mx-auto mt-56">
         <div className="translate-y-1/2 flex-center flex-col max-w-7xl bg-[#F19953] rounded-lg mx-auto py-20">
           <span className="font-bold text-white text-4xl">社区支持</span>
-          <Link href="/docs/developer">
+          <Link href="/docs/developer" legacyBehavior>
             <a
               className="mt-8 px-4 py-2 rounded-xl 
             bg-[#EDF7F6] shadow-lg shadow-[#EDF7F6]/50 active:shadow-none transition-shadow
@@ -166,6 +168,28 @@ const Home: NextPage = () => {
       </section>
     </div>
   );
+};
+const token =
+  "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";
+const token2 = "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";
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  // const octokit = new Octokit({
+  //   auth: token2,
+  // });
+  // const collaborators = await octokit.request(
+  //   "GET /repos/{owner}/{repo}/collaborators",
+  //   {
+  //     owner: "the1812",
+  //     repo: "Bilibili-Evolved",
+  //   }
+  // );
+  return {
+    props: {
+      hi: "jcak",
+      collaborators: [],
+    },
+  };
 };
 
 export default Home;

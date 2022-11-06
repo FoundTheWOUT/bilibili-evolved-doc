@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { RouteItem, SidebarContext } from ".";
+import React from "react";
+import { RouteItem } from ".";
 import cn from "classnames";
-import Linkable from "../HOC/Linkable";
+import Link, { LinkProps } from "next/link";
 
 interface SideBarItemProps {
   route: RouteItem;
@@ -9,24 +9,22 @@ interface SideBarItemProps {
   level: number;
 }
 
-interface ItemProps {
+interface ItemProps extends LinkProps {
   title: string;
   level: number;
   selected?: boolean;
   selectable?: boolean;
-  href?: string;
 }
 
-const Item = ({
+const StyledLink = ({
   title,
   level,
   selected,
   selectable = true,
   ...rest
 }: ItemProps) => {
-  const { hideSidebar } = useContext(SidebarContext);
   return (
-    <a
+    <Link
       className={cn("px-4 py-2 my-1 rounded dark:text-white transition block", {
         "hover:bg-sky-100 dark:hover:bg-opacity-25": selectable && !selected,
         "font-bold": level === 0,
@@ -34,23 +32,35 @@ const Item = ({
         "ml-4": level === 2,
         "bg-sky-200 dark:bg-sky-700 text-sky-700 dark:text-sky-200": selected,
       })}
-      onClick={() => hideSidebar()}
       {...rest}
     >
       {title}
-    </a>
+    </Link>
   );
 };
 
 const SideBarItem = ({ route, selected, level }: SideBarItemProps) => {
-  return Linkable(
-    <Item
-      title={route.title}
-      level={level}
-      selected={selected === route.path}
-    />,
-    route
+  return (
+    <>
+      {route.path && (
+        <StyledLink
+          key={route.title}
+          href={route.path}
+          title={route.title}
+          level={level}
+          selected={selected === route.path}
+        />
+      )}
+    </>
   );
+  // return Linkable(
+  //   <Item
+  //     title={route.title}
+  //     level={level}
+  //     selected={selected === route.path}
+  //   />,
+  //   route
+  // );
 };
 
 export default SideBarItem;

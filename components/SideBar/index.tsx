@@ -1,5 +1,4 @@
 import React, { PropsWithChildren, useState } from "react";
-import { useRouter } from "next/router";
 import SideBarTree from "./SideBarTree";
 import DocType from "./DocType";
 import DarkSwitch from "components/DarkSwitch";

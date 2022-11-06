@@ -17,10 +17,10 @@ const DocType = ({ ...props }) => {
 
   return (
     <div {...props}>
-      <Link href="/docs/user">
+      <Link href="/docs/user" legacyBehavior>
         <a className={style("user")}>用户手册</a>
       </Link>
-      <Link href="/docs/developer">
+      <Link href="/docs/developer" legacyBehavior>
         <a className={style("developer")}>开发文档</a>
       </Link>
     </div>

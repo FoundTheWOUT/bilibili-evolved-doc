@@ -16,22 +16,23 @@ export interface FrontMatter {}
 
 const MDXFrontMatter = React.createContext({});
 
-export default function MDXWrapper(
-  props: PropsWithChildren<{
-    headings: RemarkHeading[];
-    meta: FrontMatter;
-  }>
-) {
-  const { meta } = props;
-  const { headings } = window;
-  const headers: TocHeader[] =
-    headings?.map((header) => ({
-      url: `#${header.id}`,
-      depth: header.depth - 1,
-      text: header.title,
-    })) ?? [];
+export default function MDXWrapper({
+  headings,
+  router,
+  meta,
+  children,
+}: PropsWithChildren<{
+  headings: RemarkHeading[];
+  meta: FrontMatter;
+  router: any;
+}>) {
+  
+  const headers: TocHeader[] = headings.map((header) => ({
+    url: `#${header.id}`,
+    depth: header.depth - 1,
+    text: header.title,
+  }));
 
-  const { tree: routerTree } = useRouterTree();
 
   return (
     <>
@@ -43,8 +44,8 @@ export default function MDXWrapper(
         <div className="h-full max-w-[100rem] lg:flex flex-1 mx-auto">
           {/* context */}
           <div className="lg:w-4/5">
-            <article id="article">{props.children}</article>
-            <Footer routerTree={routerTree} />
+            <article id="article">{children}</article>
+            <Footer routerTree={router} />
           </div>
           <Toc headers={headers} />
         </div>

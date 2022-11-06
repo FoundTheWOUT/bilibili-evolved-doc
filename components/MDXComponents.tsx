@@ -125,7 +125,7 @@ export const MDXComponents: Components = {
   a: ({ href, ...props }) => {
     if (!href?.startsWith("http")) {
       return (
-        <Link href={href!}>
+        <Link href={href!} legacyBehavior>
           <a className="text-sky-500 hover:text-sky-700" {...props} />
         </Link>
       );
@@ -160,5 +160,5 @@ export const MDXComponents: Components = {
   summary: ({ ...props }) => (
     <summary className="dark:text-white cursor-pointer" {...props} />
   ),
-  wrapper: MDXWrapper,
+  // wrapper: MDXWrapper,
 };

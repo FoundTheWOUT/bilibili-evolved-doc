@@ -36,7 +36,14 @@ const normalizeHTML = (tree) => {
 const normalizeContentPlugin = () => {
   return (tree) => {
     visit(tree, (node) => {
-      if (node.type == "html") {
+      if (!node.value) return;
+      // ! only modify img
+      if (
+        node.type == "html" &&
+        (node.value.startsWith("<img") ||
+          node.value.startsWith("<!-") ||
+          node.value.startsWith("<style"))
+      ) {
         if (isJsxNode(node)) return;
         const tree = fromHtml(node.value, { fragment: true }) ?? "";
         node.value = normalizeHTML(tree);
@@ -90,10 +97,9 @@ const handleSectionSelect = (tree, options) => {
   }
   return tree;
 };
-
+const cache = new Map();
 const fetchContentPlugin = (options = {}) => {
   const { section, dry } = options;
-  const cache = new Map();
   return async (tree) => {
     if (dry && section) {
       handleSectionSelect(tree, options);
@@ -162,7 +168,14 @@ const fetchContentPlugin = (options = {}) => {
       try {
         await p();
       } catch (error) {
-        throw Error(error);
+        switch (process.env.NODE_ENV) {
+          case "development":
+            console.error(error);
+          default: {
+            throw Error(error);
+            process.exit(0);
+          }
+        }
       }
     }
   };
@@ -184,3 +197,14 @@ export async function loader(content, callback, options) {
       callback(null, res.toString());
     });
 }
+
+export const loaderPromise = (template, options) =>
+  new Promise((resolve, reject) => {
+    loader(
+      template,
+      (_, value) => {
+        resolve(value);
+      },
+      options
+    );
+  });

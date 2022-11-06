@@ -13,11 +13,12 @@ const writeToPublic = (target, text) => {
       mkdirSync(_dir);
     } else {
       writeFile(file_path, text);
+      console.log("write to", target);
     }
   });
 };
 
-export default async function () {
+async function fetchIt() {
   try {
     await fetch(BASE_URL + "/master/dist/bilibili-evolved.user.js")
       .then((res) => res.text())
@@ -36,3 +37,5 @@ export default async function () {
     console.log(error);
   }
 }
+fetchIt();
+// export default fetchIt;

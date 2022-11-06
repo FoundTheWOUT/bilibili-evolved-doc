@@ -5,7 +5,7 @@ import Image from "next/image";
 const Title = ({ ...props }) => {
   return (
     <div {...props}>
-      <Link href="/">
+      <Link href="/" legacyBehavior>
         <a className="flex justify-center items-center">
           <Image
             className="cursor-pointer"

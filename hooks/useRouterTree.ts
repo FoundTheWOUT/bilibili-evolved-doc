@@ -3,10 +3,8 @@ import sideBarDeveloper from "constant/sidebar-developer";
 import { useRouter } from "next/router";
 
 export const useRouterTree = () => {
-  const {
-    query: { slug },
-  } = useRouter();
-  const tree = slug && slug.includes("user") ? sideBarUser : sideBarDeveloper;
+  const { asPath } = useRouter();
+  const tree = asPath.startsWith("/docs/user") ? sideBarUser : sideBarDeveloper;
   return {
     tree,
     getNode(path: string) {

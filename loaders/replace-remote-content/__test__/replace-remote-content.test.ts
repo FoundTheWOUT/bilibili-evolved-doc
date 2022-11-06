@@ -1,22 +1,11 @@
-import { loader } from "../main.mjs";
+import { loaderPromise as __replaceFun } from "../main.mjs";
 // const replaceRemoteContent = (content) => content;
 import { describe, it, expect, beforeAll } from "vitest";
 import { readFile } from "fs/promises";
 import handler from "serve-handler";
 import { createServer } from "http";
-const __replaceFun = (
-  template: string,
-  options?: { dry: boolean; section: string[] }
-) =>
-  new Promise<string>((resolve, reject) => {
-    loader(
-      template,
-      (_, value) => {
-        resolve(value);
-      },
-      options
-    );
-  });
+import { readFileSync } from "fs";
+import path from "path";
 
 // first, host
 const TEST_PORT = 5500;
@@ -198,6 +187,18 @@ body
   it("should remove html comment", async () => {
     const template = `<remote src="http://127.0.0.1:5500/__test__/html-comment.md"/>`;
     const res = await __replaceFun(template);
-    expect(res).eq('\n\n');
+    expect(res).eq("\n\n");
+  });
+
+  it("don't break mdast structure", async () => {
+    const content =
+      '<remote src="http://127.0.0.1:5500/__test__/changelog.md"/>';
+
+    const res = (await __replaceFun(content)) as string;
+    // console.log('------------------------- res --------------------------')
+    // console.log("res:", res);
+    const file = readFileSync(path.resolve(__dirname, "./changelog.out.md"));
+    const output = file.toString();
+    expect(res.replaceAll("\r", "")).eq(output);
   });
 });
