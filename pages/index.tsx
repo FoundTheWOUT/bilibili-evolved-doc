@@ -169,27 +169,5 @@ const Home: NextPage = () => {
     </div>
   );
 };
-const token =
-  "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";
-const token2 = "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";
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  // const octokit = new Octokit({
-  //   auth: token2,
-  // });
-  // const collaborators = await octokit.request(
-  //   "GET /repos/{owner}/{repo}/collaborators",
-  //   {
-  //     owner: "the1812",
-  //     repo: "Bilibili-Evolved",
-  //   }
-  // );
-  return {
-    props: {
-      hi: "jcak",
-      collaborators: [],
-    },
-  };
-};
 
 export default Home;
