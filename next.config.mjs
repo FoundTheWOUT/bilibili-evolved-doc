@@ -8,6 +8,13 @@ const config = {
   },
   // reactStrictMode: true,
   images: {
+    dangerouslyAllowSVG: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "contrib.rocks",
+      },
+    ],
     domains: ["user-images.githubusercontent.com", "cdn.jsdelivr.net"],
   },
 };

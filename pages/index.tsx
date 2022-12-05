@@ -1,11 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
-import type { NextPage, GetStaticProps } from "next";
+import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import cn from "classnames";
 import { Themes, useTheme } from "components/ThemeProvider";
-import { Octokit } from "octokit";
+
 const tabs = [
   {
     title: "自由组合",
@@ -44,45 +44,31 @@ const Home: NextPage = () => {
         <title>欢迎o(*￣▽￣*)ブ</title>
       </Head>
 
-      <div className="flex lg:px-32 pt-4">
-        <div className="h-full sticky top-4 hidden xl:block">
-          <div
-            className="absolute"
-            style={{
-              left: "-100px",
-              top: "-50px",
-              width: "640px",
-              height: "1024px",
-              background: "rgba(27, 178, 237, 0.3)",
-              filter: "blur(200px)",
-              borderRadius: "200px",
-            }}
-          ></div>
-          <div className="relative">
-            <img
-              className={cn("absolute top-5 rounded-lg transition opacity-0", {
-                "translate-x-40 opacity-100": theme == Themes.DARK,
-              })}
-              src="/images/index/bilibili-dark.png"
-              alt=""
-            />
-            <img
-              className={cn(
-                "rounded-xl transition h-[90vh] origin-bottom-left object-contain",
-                {
-                  "rotate-0": theme == Themes.LIGHT,
-                  "-rotate-12": theme == Themes.DARK,
-                }
-              )}
-              src={
-                theme == Themes.DARK
-                  ? tabs[activeImage].img!.dark
-                  : tabs[activeImage].img!.light
-              }
-              alt="img"
-              width={322}
-            />
-          </div>
+      <div className="flex lg:px-32">
+        <div className="h-screen sticky top-0 hidden xl:flex items-center light-up">
+          <Image
+            className="absolute top-20 left-32 rounded-lg transition opacity-0 dark:translate-x-10 dark:opacity-100"
+            src="/images/index/bilibili-dark.png"
+            alt=""
+            height={222}
+            width={321}
+          />
+          {/* light */}
+          <Image
+            className="rounded-xl origin-bottom-left object-contain dark:hidden my-auto"
+            src="/images/index/image-0.png"
+            alt="img"
+            width={321}
+            height={911}
+          />
+          {/* dark */}
+          <Image
+            className="rounded-xl origin-bottom-left object-contain hidden dark:inline my-auto"
+            src="/images/index/image-dark-0.png"
+            alt="img"
+            width={321}
+            height={951}
+          />
         </div>
 
         <main className="flex-1 z-10">
@@ -159,10 +145,12 @@ const Home: NextPage = () => {
             </a>
           </Link>
           {/* TODO: replace with Github API */}
-          <img
+          <Image
             className="mt-10"
             src="https://contrib.rocks/image?repo=the1812/Bilibili-Evolved"
             alt=""
+            height={132}
+            width={812}
           />
         </div>
       </section>
