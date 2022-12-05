@@ -2,7 +2,6 @@ import Toc from "./Toc";
 import Footer from "./Footer";
 import Head from "next/head";
 import type { TocHeader } from "./Toc";
-import { useRouterTree } from "hooks/useRouterTree";
 import React, { PropsWithChildren } from "react";
 
 export interface RemarkHeading {
@@ -26,13 +25,11 @@ export default function MDXWrapper({
   meta: FrontMatter;
   router: any;
 }>) {
-  
   const headers: TocHeader[] = headings.map((header) => ({
     url: `#${header.id}`,
     depth: header.depth - 1,
     text: header.title,
   }));
-
 
   return (
     <>
@@ -44,7 +41,9 @@ export default function MDXWrapper({
         <div className="h-full max-w-[100rem] lg:flex flex-1 mx-auto">
           {/* context */}
           <div className="lg:w-4/5">
-            <article id="article">{children}</article>
+            <article id="article" className="dark:text-white">
+              {children}
+            </article>
             <Footer routerTree={router} />
           </div>
           <Toc headers={headers} />

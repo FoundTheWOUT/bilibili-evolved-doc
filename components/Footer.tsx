@@ -3,7 +3,6 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import type { RouteItem } from "./SideBar";
 import Linkable from "./HOC/Linkable";
 import Image from "next/image";
-import { Themes, useTheme } from "./ThemeProvider";
 import { useMdxPath } from "hooks/useMdxPath";
 
 interface FooterProps {
@@ -56,7 +55,6 @@ export default function Footer({ routerTree }: FooterProps) {
     routerTree,
     pathname
   );
-  const { theme } = useTheme();
 
   return (
     <>
@@ -97,11 +95,15 @@ export default function Footer({ routerTree }: FooterProps) {
           <Image
             width={20}
             height={20}
-            src={
-              theme === Themes.DARK
-                ? "/icons/github-light.png"
-                : "/icons/github.png"
-            }
+            className="hidden dark:inline"
+            src="/icons/github-light.png"
+            alt="https://github.com/FoundTheWOUT/bilibili-evolved-doc"
+          />
+          <Image
+            width={20}
+            height={20}
+            className="dark:hidden"
+            src="/icons/github.png"
             alt="https://github.com/FoundTheWOUT/bilibili-evolved-doc"
           />
         </a>

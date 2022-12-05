@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from "react";
+import React, { PropsWithChildren, useState, useEffect } from "react";
 import SideBarTree from "./SideBarTree";
 import DocType from "./DocType";
 import DarkSwitch from "components/DarkSwitch";
@@ -6,6 +6,7 @@ import Title from "components/Title";
 import cn from "classnames";
 import Search from "./Search";
 import { useMdxPath } from "hooks/useMdxPath";
+import { useRouter } from "next/router";
 
 export interface RouteItem {
   title: string;
@@ -71,7 +72,11 @@ export const SideBar = ({ routerTree }: SideBarProps) => {
 };
 
 export const SidebarProvider = ({ children }: PropsWithChildren<{}>) => {
+  const router = useRouter();
   const [hidden, setHidden] = useState(true);
+  useEffect(() => {
+    setHidden(true);
+  }, [router.query.slug]);
   return (
     <SidebarContext.Provider
       value={{

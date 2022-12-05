@@ -6,12 +6,11 @@ import { H1, H2, H3, H4 } from "./Heading";
 import "highlight.js/styles/github-dark.css";
 import { Components } from "@mdx-js/react/lib";
 import { ClipboardIcon, ClipboardCheckIcon } from "@heroicons/react/solid";
-import MDXWrapper from "./MDXWrapper";
 import Link from "next/link";
 // import SyntaxHighlighter from "react-syntax-highlighter";
 
 const P = (p: JSX.IntrinsicElements["p"]) => (
-  <p className="whitespace-pre-wrap my-4 dark:text-white" {...p} />
+  <p className="whitespace-pre-wrap my-4" {...p} />
 );
 
 const Strong = (strong: JSX.IntrinsicElements["strong"]) => (
@@ -19,13 +18,13 @@ const Strong = (strong: JSX.IntrinsicElements["strong"]) => (
 );
 
 const OL = (p: JSX.IntrinsicElements["ol"]) => (
-  <ol className="ml-6 my-3 list-decimal dark:text-white" {...p} />
+  <ol className="ml-6 my-3 list-decimal" {...p} />
 );
 const LI = (p: JSX.IntrinsicElements["li"]) => (
-  <li className="leading-relaxed mb-1 dark:text-white" {...p} />
+  <li className="leading-relaxed mb-1" {...p} />
 );
 const UL = (p: JSX.IntrinsicElements["ul"]) => (
-  <ul className="ml-6 my-3 list-disc dark:text-white overflow-y-auto" {...p} />
+  <ul className="ml-6 my-3 list-disc overflow-y-auto" {...p} />
 );
 
 const Divider = () => (
@@ -110,9 +109,7 @@ export const MDXComponents: Components = {
   code: InlineCode,
   pre: Pre,
   // table
-  table: ({ ...props }) => (
-    <table className="mx-auto my-8 dark:text-white" {...props} />
-  ),
+  table: ({ ...props }) => <table className="mx-auto my-8" {...props} />,
   th: ({ ...props }) => (
     <th
       className="bg-sky-50 dark:bg-sky-900 text-sky-700 dark:text-sky-300 border border-sky-700 px-4 py-2"
@@ -142,23 +139,9 @@ export const MDXComponents: Components = {
   },
   img: ({ ...props }) => {
     return (
-      //   <Image
-      //   className="rounded-lg"
-      //   src={props.src!}
-      //   alt=""
-      //   height={200}
-      //   layout="fill"
-      // />
       <span className="flex m-2">
         <img className="rounded-lg max-h-[60rem]" {...props} alt="" />
       </span>
     );
   },
-  figcaption: ({ ...props }) => (
-    <figcaption className="dark:text-white" {...props} />
-  ),
-  summary: ({ ...props }) => (
-    <summary className="dark:text-white cursor-pointer" {...props} />
-  ),
-  // wrapper: MDXWrapper,
 };

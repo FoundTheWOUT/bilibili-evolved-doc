@@ -1,10 +1,10 @@
 import React from "react";
 import cn from "classnames";
-import { Themes, useTheme } from "./ThemeProvider";
+import { useTheme } from "./ThemeProvider";
 import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 
 const DarkSwitch = ({ className }: { className?: string }) => {
-  const { theme, setDarkMode, setLightMode } = useTheme();
+  const { setDarkMode, setLightMode } = useTheme();
 
   return (
     <div
@@ -14,14 +14,14 @@ const DarkSwitch = ({ className }: { className?: string }) => {
       )}
     >
       <div className="h-6">
-        {theme === Themes.DARK ? (
-          <SunIcon
-            className="h-full text-white"
-            onClick={() => setLightMode()}
-          />
-        ) : (
-          <MoonIcon className="h-full" onClick={() => setDarkMode()} />
-        )}
+        <SunIcon
+          className="h-full text-white hidden dark:inline"
+          onClick={() => setLightMode()}
+        />
+        <MoonIcon
+          className="h-full dark:hidden"
+          onClick={() => setDarkMode()}
+        />
       </div>
     </div>
   );
