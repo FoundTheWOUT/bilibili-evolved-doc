@@ -109,7 +109,12 @@ export const MDXComponents: Components = {
   code: InlineCode,
   pre: Pre,
   // table
-  table: ({ ...props }) => <table className="mx-auto my-8" {...props} />,
+  table: ({ ...props }) => (
+    <table
+      className="mx-auto my-8 table-fixed w-full text-xs md:table-auto md:text-base md:w-auto"
+      {...props}
+    />
+  ),
   th: ({ ...props }) => (
     <th
       className="bg-sky-50 dark:bg-sky-900 text-sky-700 dark:text-sky-300 border border-sky-700 px-4 py-2"

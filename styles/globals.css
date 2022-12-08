@@ -30,6 +30,10 @@
     focus:text-sky-500
     transition-shadow;
   }
+
+  .btn {
+    @apply flex-center rounded-xl bg-MAIN shadow-lg shadow-MAIN/50 active:shadow-none transition-shadow text-white;
+  }
 }
 
 /* *::-webkit-scrollbar {
