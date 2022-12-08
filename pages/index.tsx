@@ -66,7 +66,7 @@ const Home: NextPage = () => {
 
       <div className="flex lg:px-32">
         {/* left */}
-        <div className="h-screen w-[46rem] sticky top-0 hidden xl:flex items-center light-up">
+        <div className="light-up sticky top-0 hidden h-screen w-[46rem] items-center xl:flex">
           <StyledTransition show={activeTab !== 2 && theme == Themes.LIGHT}>
             {/* light */}
             <Image
@@ -100,7 +100,7 @@ const Home: NextPage = () => {
             <Image className="rounded-xl" src={freshHome} alt="" />
             <Link
               href="/docs/user/features#清爽首页"
-              className="btn w-fit px-4 py-2 mt-4 mx-auto"
+              className="btn mx-auto mt-4 w-fit px-4 py-2"
             >
               了解更多
             </Link>
@@ -110,12 +110,12 @@ const Home: NextPage = () => {
         {/* right */}
         <main className="z-10 flex-1">
           {/* page1 */}
-          <section className="h-screen flex-center flex-col">
+          <section className="flex-center h-screen flex-col">
             <div className="flex flex-col">
-              <span className="font-bold text-MAIN text-7xl">
+              <span className="text-7xl font-bold text-MAIN">
                 BiliBili-Evolved
               </span>
-              <span className="font-bold text-lg mt-4 dark:text-white">
+              <span className="mt-4 text-lg font-bold dark:text-white">
                 给你足够多，足够强大的功能
               </span>
               <Link
@@ -128,15 +128,15 @@ const Home: NextPage = () => {
           </section>
 
           {/* page2 */}
-          <section className="h-screen flex-center max-w-xl flex-col mx-auto">
-            <span className="font-bold text-MAIN text-2xl mr-auto">我们有</span>
-            <div className="w-full border-MAIN/30 border-b-2 my-4"></div>
-            <div className="w-full grid gap-5 lg:grid-cols-2">
+          <section className="flex-center mx-auto h-screen max-w-xl flex-col">
+            <span className="mr-auto text-2xl font-bold text-MAIN">我们有</span>
+            <div className="my-4 w-full border-b-2 border-MAIN/30"></div>
+            <div className="grid w-full gap-5 lg:grid-cols-2">
               {tabs.map((item, idx) => (
                 <div
                   key={idx}
                   className={cn(
-                    "h-40 border-4 rounded-xl p-4 lg:p-14 flex justify-center flex-col cursor-pointer transition",
+                    "flex h-40 cursor-pointer flex-col justify-center rounded-xl border-4 p-4 transition lg:p-14",
                     {
                       "border-MAIN/30": idx !== 3 && activeTab !== idx,
                       "border-MAIN shadow-lg shadow-MAIN/30":
@@ -152,7 +152,7 @@ const Home: NextPage = () => {
                   }}
                 >
                   <span
-                    className={cn("font-bold text-lg", {
+                    className={cn("text-lg font-bold", {
                       "text-MAIN": idx !== 3,
                     })}
                   >
@@ -167,14 +167,14 @@ const Home: NextPage = () => {
       </div>
 
       {/* footer */}
-      <section className="h-screen lg:mx-auto mt-56">
-        <div className="translate-y-1/2 flex-center flex-col max-w-7xl bg-[#F19953] rounded-lg mx-auto py-20">
-          <span className="font-bold text-white text-4xl">社区支持</span>
+      <section className="mt-56 h-screen lg:mx-auto">
+        <div className="flex-center mx-auto max-w-7xl translate-y-1/2 flex-col rounded-lg bg-[#F19953] py-20">
+          <span className="text-4xl font-bold text-white">社区支持</span>
           <Link href="/docs/developer" legacyBehavior>
             <a
-              className="mt-8 px-4 py-2 rounded-xl 
-            bg-[#EDF7F6] shadow-lg shadow-[#EDF7F6]/50 active:shadow-none transition-shadow
-              text-lg font-bold text-[#2660A4]"
+              className="mt-8 rounded-xl bg-[#EDF7F6] px-4 
+            py-2 text-lg font-bold text-[#2660A4] shadow-lg
+              shadow-[#EDF7F6]/50 transition-shadow active:shadow-none"
             >
               参与开发
             </a>

@@ -51,9 +51,9 @@ export default function Toc({ headers }: TocProps) {
   }, [headers.length]);
 
   return (
-    <div className="ml-4 text-sm hidden xl:block">
+    <div className="ml-4 hidden text-sm xl:block">
       {/* <div className="fixed right-0 top-0 pt-8 w-72 text-sm hidden lg:block"> */}
-      <div className="sticky top-8 w-64 max-h-[75vh] overflow-y-auto dark:text-white">
+      <div className="sticky top-8 max-h-[75vh] w-64 overflow-y-auto dark:text-white">
         {/* TODO: loading */}
         {headers.map((header, i) => {
           let slugger = new GithubSlugger();
@@ -63,7 +63,7 @@ export default function Toc({ headers }: TocProps) {
           return (
             <div
               className={classNames(
-                "px-4 pb-2 pl-1 hover:text-sky-600 cursor-pointer",
+                "cursor-pointer px-4 pb-2 pl-1 hover:text-sky-600",
                 {
                   "text-sky-600 dark:text-sky-300": activeHeader === i,
                 }

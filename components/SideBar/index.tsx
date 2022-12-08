@@ -33,7 +33,7 @@ export const SideBar = ({ routerTree }: SideBarProps) => {
     <div>
       <div
         className={cn(
-          "fixed h-screen left-0 right-0 backdrop-blur z-30 lg:hidden",
+          "fixed left-0 right-0 z-30 h-screen backdrop-blur lg:hidden",
           {
             hidden,
           }
@@ -43,17 +43,17 @@ export const SideBar = ({ routerTree }: SideBarProps) => {
 
       <aside
         className={cn(
-          "fixed top-0 h-screen w-80 flex flex-col bg-white dark:bg-stone-900 lg:visible z-40 transform transition-all border-r lg:border-none lg:bg-transparent dark:lg:bg-transparent",
+          "fixed top-0 z-40 flex h-screen w-80 transform flex-col border-r bg-white transition-all dark:bg-stone-900 lg:visible lg:border-none lg:bg-transparent dark:lg:bg-transparent",
           {
             "-translate-x-full opacity-0 lg:-translate-x-0 lg:opacity-100":
               hidden,
           }
         )}
       >
-        <Title className="p-4 flex items-center invisible lg:visible" />
+        <Title className="invisible flex items-center p-4 lg:visible" />
 
-        <div className="h-8 flex px-4 items-center dark:text-white">
-          <DocType className="flex relative flex-1 bg-stone-100 dark:bg-stone-700 rounded-md p-1" />
+        <div className="flex h-8 items-center px-4 dark:text-white">
+          <DocType className="relative flex flex-1 rounded-md bg-stone-100 p-1 dark:bg-stone-700" />
           <DarkSwitch className="hidden lg:flex" />
         </div>
 

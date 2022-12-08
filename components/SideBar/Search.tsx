@@ -32,12 +32,12 @@ const Search = ({ ...props }) => {
       <div {...props}>
         <button
           type="button"
-          className="p-2 w-full rounded flex items-center bg-stone-100 dark:bg-stone-700 text-gray-400 dark:text-stone-400 focus:ring ring-sky-200 dark:ring-sky-700"
+          className="flex w-full items-center rounded bg-stone-100 p-2 text-gray-400 ring-sky-200 focus:ring dark:bg-stone-700 dark:text-stone-400 dark:ring-sky-700"
           onClick={onOpen}
         >
-          <SearchIcon className="h-5 w-5 mx-2 text-stone-500 dark:text-stone-300" />
+          <SearchIcon className="mx-2 h-5 w-5 text-stone-500 dark:text-stone-300" />
           搜索
-          <kbd className="ml-auto DocSearch-Button-Key">/</kbd>
+          <kbd className="DocSearch-Button-Key ml-auto">/</kbd>
         </button>
       </div>
       {isModelShow &&

@@ -25,12 +25,12 @@ const StyledLink = ({
 }: ItemProps) => {
   return (
     <Link
-      className={cn("px-4 py-2 my-1 rounded dark:text-white transition block", {
+      className={cn("my-1 block rounded px-4 py-2 transition dark:text-white", {
         "hover:bg-sky-100 dark:hover:bg-opacity-25": selectable && !selected,
         "font-bold": level === 0,
         "ml-2": level === 1,
         "ml-4": level === 2,
-        "bg-sky-200 dark:bg-sky-700 text-sky-700 dark:text-sky-200": selected,
+        "bg-sky-200 text-sky-700 dark:bg-sky-700 dark:text-sky-200": selected,
       })}
       {...rest}
     >

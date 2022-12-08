@@ -29,7 +29,7 @@ const MDXPage = ({ source, router, headings }: any) => {
     <SidebarProvider>
       <NavBar />
       <SideBar routerTree={router} />
-      <div className="px-6 lg:flex lg:ml-80">
+      <div className="px-6 lg:ml-80 lg:flex">
         <MDXWrapper router={router} headings={headings} meta={{}}>
           <MDXRemote {...source} components={MDXComponents} />
         </MDXWrapper>

@@ -6,7 +6,7 @@ const Title = ({ ...props }) => {
   return (
     <div {...props}>
       <Link href="/" legacyBehavior>
-        <a className="flex justify-center items-center">
+        <a className="flex items-center justify-center">
           <Image
             className="cursor-pointer"
             src="/icon.svg"

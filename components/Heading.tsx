@@ -26,7 +26,7 @@ const createHeaderLink = (children: JSX.Element) => {
       <a
         id={id}
         href={`#${id}`}
-        className="anchor flex opacity-0 h-full group-hover:opacity-100 items-center absolute top-0 transform -translate-x-full transition-opacity dark:text-white"
+        className="anchor absolute top-0 flex h-full -translate-x-full transform items-center opacity-0 transition-opacity group-hover:opacity-100 dark:text-white"
       >
         <LinkIcon className="h-6" />
       </a>
@@ -39,7 +39,7 @@ export const H1 = ({ className, ...props }: JSX.IntrinsicElements["h1"]) =>
     <h1
       className={cn(
         className,
-        "text-[2rem] my-4 font-bold leading-tight dark:text-white"
+        "my-4 text-[2rem] font-bold leading-tight dark:text-white"
       )}
       {...props}
     />
@@ -49,7 +49,7 @@ export const H2 = ({ className, ...props }: JSX.IntrinsicElements["h2"]) =>
   createHeaderLink(
     <h2
       className={cn(
-        "text-3xl leading-10 text-primary dark:text-primary-dark font-bold my-6 dark:text-white",
+        "text-primary dark:text-primary-dark my-6 text-3xl font-bold leading-10 dark:text-white",
         className
       )}
       {...props}
@@ -61,7 +61,7 @@ export const H3 = ({ className, ...props }: JSX.IntrinsicElements["h3"]) =>
     <h3
       className={cn(
         className,
-        "text-2xl leading-9 text-primary dark:text-primary-dark font-bold my-6 dark:text-white"
+        "text-primary dark:text-primary-dark my-6 text-2xl font-bold leading-9 dark:text-white"
       )}
       {...props}
     />
@@ -72,7 +72,7 @@ export const H4 = ({ className, ...props }: JSX.IntrinsicElements["h4"]) =>
     <h4
       className={cn(
         className,
-        "text-xl font-bold leading-9 my-4 dark:text-white"
+        "my-4 text-xl font-bold leading-9 dark:text-white"
       )}
       {...props}
     />

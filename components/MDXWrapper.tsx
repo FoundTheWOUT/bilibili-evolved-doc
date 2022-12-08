@@ -38,7 +38,7 @@ export default function MDXWrapper({
       </Head>
 
       <MDXFrontMatter.Provider value={meta}>
-        <div className="h-full max-w-[100rem] lg:flex flex-1 mx-auto">
+        <div className="mx-auto h-full max-w-[100rem] flex-1 lg:flex">
           {/* context */}
           <div className="lg:w-4/5">
             <article id="article" className="dark:text-white">

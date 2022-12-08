@@ -9,13 +9,13 @@ const DarkSwitch = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "flex justify-center items-center h-full w-8 cursor-pointer",
+        "flex h-full w-8 cursor-pointer items-center justify-center",
         className
       )}
     >
       <div className="h-6">
         <SunIcon
-          className="h-full text-white hidden dark:inline"
+          className="hidden h-full text-white dark:inline"
           onClick={() => setLightMode()}
         />
         <MoonIcon

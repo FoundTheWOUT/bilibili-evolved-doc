@@ -10,7 +10,7 @@ import Link from "next/link";
 // import SyntaxHighlighter from "react-syntax-highlighter";
 
 const P = (p: JSX.IntrinsicElements["p"]) => (
-  <p className="whitespace-pre-wrap my-4" {...p} />
+  <p className="my-4 whitespace-pre-wrap" {...p} />
 );
 
 const Strong = (strong: JSX.IntrinsicElements["strong"]) => (
@@ -18,17 +18,17 @@ const Strong = (strong: JSX.IntrinsicElements["strong"]) => (
 );
 
 const OL = (p: JSX.IntrinsicElements["ol"]) => (
-  <ol className="ml-6 my-3 list-decimal" {...p} />
+  <ol className="my-3 ml-6 list-decimal" {...p} />
 );
 const LI = (p: JSX.IntrinsicElements["li"]) => (
-  <li className="leading-relaxed mb-1" {...p} />
+  <li className="mb-1 leading-relaxed" {...p} />
 );
 const UL = (p: JSX.IntrinsicElements["ul"]) => (
-  <ul className="ml-6 my-3 list-disc overflow-y-auto" {...p} />
+  <ul className="my-3 ml-6 list-disc overflow-y-auto" {...p} />
 );
 
 const Divider = () => (
-  <hr className="my-6 block border-b border-border dark:border-border-dark" />
+  <hr className="border-border dark:border-border-dark my-6 block border-b" />
 );
 
 // const Gotcha = ({ children }: { children: React.ReactNode }) => (
@@ -45,10 +45,10 @@ const Blockquote = ({
   return (
     <>
       <blockquote
-        className="py-4 px-8 my-8 shadow-inner bg-gray-100 dark:bg-neutral-700 bg-opacity-50 rounded-lg leading-6 flex relative"
+        className="relative my-8 flex rounded-lg bg-gray-100 bg-opacity-50 py-4 px-8 leading-6 shadow-inner dark:bg-neutral-700"
         {...props}
       >
-        <span className="block relative">{children}</span>
+        <span className="relative block">{children}</span>
       </blockquote>
     </>
   );
@@ -63,24 +63,24 @@ const Pre = ({ children }: JSX.IntrinsicElements["pre"]) => {
   };
 
   return (
-    <pre className="relative w-full my-2">
+    <pre className="relative my-2 w-full">
       {checked ? (
         <ClipboardCheckIcon
-          className="w-5 absolute right-0 text-emerald-500 m-2 cursor-pointer"
+          className="absolute right-0 m-2 w-5 cursor-pointer text-emerald-500"
           onClick={() => {
             handleClipboard(plainText);
           }}
         />
       ) : (
         <ClipboardIcon
-          className="w-5 absolute right-0 text-white m-2 cursor-pointer"
+          className="absolute right-0 m-2 w-5 cursor-pointer text-white"
           onClick={() => {
             handleClipboard(plainText);
             setChecked(true);
           }}
         />
       )}
-      <code className="hljs rounded w-full">{children}</code>
+      <code className="hljs w-full rounded">{children}</code>
     </pre>
   );
 };
@@ -88,7 +88,7 @@ const Pre = ({ children }: JSX.IntrinsicElements["pre"]) => {
 const InlineCode = ({ ...props }: JSX.IntrinsicElements["code"]) => {
   return (
     <span
-      className="font-medium bg-sky-50 dark:bg-sky-900 text-sky-700 dark:text-sky-300 rounded-md px-1"
+      className="rounded-md bg-sky-50 px-1 font-medium text-sky-700 dark:bg-sky-900 dark:text-sky-300"
       {...props}
     />
   );
@@ -111,13 +111,13 @@ export const MDXComponents: Components = {
   // table
   table: ({ ...props }) => (
     <table
-      className="mx-auto my-8 table-fixed w-full text-xs md:table-auto md:text-base md:w-auto"
+      className="mx-auto my-8 w-full table-fixed text-xs md:w-auto md:table-auto md:text-base"
       {...props}
     />
   ),
   th: ({ ...props }) => (
     <th
-      className="bg-sky-50 dark:bg-sky-900 text-sky-700 dark:text-sky-300 border border-sky-700 px-4 py-2"
+      className="border border-sky-700 bg-sky-50 px-4 py-2 text-sky-700 dark:bg-sky-900 dark:text-sky-300"
       {...props}
     />
   ),
@@ -144,8 +144,8 @@ export const MDXComponents: Components = {
   },
   img: ({ ...props }) => {
     return (
-      <span className="flex m-2">
-        <img className="rounded-lg max-h-[60rem]" {...props} alt="" />
+      <span className="m-2 flex">
+        <img className="max-h-[60rem] rounded-lg" {...props} alt="" />
       </span>
     );
   },

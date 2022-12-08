@@ -7,16 +7,16 @@ import { SidebarContext } from "./SideBar";
 const NavBar = () => {
   const { showSidebar, hidden, hideSidebar } = React.useContext(SidebarContext);
   return (
-    <div className="h-14 border-b lg:border-none sticky top-0 backdrop-blur mb-2 lg:backdrop-blur-none z-50 lg:z-0">
-      <div className="lg:hidden h-full flex items-center">
-        <div className="h-full w-14 flex items-center justify-center">
+    <div className="sticky top-0 z-50 mb-2 h-14 border-b backdrop-blur lg:z-0 lg:border-none lg:backdrop-blur-none">
+      <div className="flex h-full items-center lg:hidden">
+        <div className="flex h-full w-14 items-center justify-center">
           <MenuAlt2Icon
             className="h-6 dark:text-white"
             onClick={() => (hidden ? showSidebar() : hideSidebar())}
           />
         </div>
-        <Title className="flex-1 flex items-center justify-center" />
-        <div className="w-14 flex justify-center">
+        <Title className="flex flex-1 items-center justify-center" />
+        <div className="flex w-14 justify-center">
           <DarkSwitch />
         </div>
       </div>

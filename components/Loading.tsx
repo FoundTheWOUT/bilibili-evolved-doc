@@ -1,6 +1,6 @@
 const Loading = ({ className }: { className?: string }) => (
   <svg
-    className={"animate-spin -ml-1 mr-3 " + className}
+    className={"-ml-1 mr-3 animate-spin " + className}
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
