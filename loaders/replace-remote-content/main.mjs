@@ -97,6 +97,7 @@ const handleSectionSelect = (tree, options) => {
   }
   return tree;
 };
+// TODO: write to local.
 const cache = new Map();
 const fetchContentPlugin = (options = {}) => {
   const { section, dry } = options;

@@ -15,7 +15,11 @@ const config = {
         hostname: "contrib.rocks",
       },
     ],
-    domains: ["user-images.githubusercontent.com", "cdn.jsdelivr.net"],
+    domains: [
+      "user-images.githubusercontent.com",
+      "cdn.jsdelivr.net",
+      "avatars.githubusercontent.com",
+    ],
   },
 };
 

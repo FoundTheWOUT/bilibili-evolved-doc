@@ -54,10 +54,9 @@ const StyledTransition = ({
   </Transition>
 );
 
-const Home: NextPage = () => {
+const Home: NextPage<{ contributors: any[] }> = ({ contributors }) => {
   const [activeTab, setTab] = useState(0);
   const { theme, setDarkMode, setLightMode } = useTheme();
-
   return (
     <div className="px-5">
       <Head>
@@ -168,29 +167,57 @@ const Home: NextPage = () => {
 
       {/* footer */}
       <section className="mt-56 h-screen lg:mx-auto">
-        <div className="flex-center mx-auto max-w-7xl translate-y-1/2 flex-col rounded-lg bg-[#F19953] py-20">
+        <div className="flex-center mx-auto max-w-7xl translate-y-1/2 flex-col gap-12 rounded-lg bg-[#F19953] py-20">
           <span className="text-4xl font-bold text-white">社区支持</span>
-          <Link href="/docs/developer" legacyBehavior>
-            <a
-              className="mt-8 rounded-xl bg-[#EDF7F6] px-4 
+          <Link
+            href="/docs/developer"
+            className="rounded-xl bg-[#EDF7F6] px-4 
             py-2 text-lg font-bold text-[#2660A4] shadow-lg
               shadow-[#EDF7F6]/50 transition-shadow active:shadow-none"
-            >
-              参与开发
-            </a>
+          >
+            参与开发
           </Link>
-          {/* TODO: replace with Github API */}
-          <Image
-            className="mt-10"
-            src="https://contrib.rocks/image?repo=the1812/Bilibili-Evolved"
-            alt=""
-            height={132}
-            width={812}
-          />
+          <div className="mx-12 flex flex-wrap justify-around gap-4">
+            {contributors.map((contributor, idx) => (
+              <Link
+                href={contributor.html_url}
+                target="_blank"
+                className="flex gap-1 rounded-xl bg-[#EDF7F6] p-2 transition-shadow hover:shadow-lg hover:shadow-[#EDF7F6]/50"
+                key={idx}
+              >
+                <Image
+                  src={contributor.avatar_url}
+                  className="rounded-full"
+                  height={44}
+                  width={44}
+                  alt=""
+                />
+                <div className="flex flex-col">
+                  <span className="font-extrabold text-[#2660A4]">
+                    {contributor.login}
+                  </span>
+                  <span className="text-sm text-[#2660A4]/70">
+                    贡献 {contributor.contributions}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const contributors = await fetch(
+    "https://api.github.com/repos/the1812/Bilibili-Evolved/contributors "
+  ).then((res) => res.json());
+  return {
+    props: {
+      contributors,
+    }, // will be passed to the page component as props
+  };
+}
 
 export default Home;

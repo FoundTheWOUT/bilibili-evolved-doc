@@ -25,7 +25,6 @@
     "js-yaml": "^4.1.0",
     "next": "13.0.1",
     "next-mdx-remote": "^4.1.0",
-    "octokit": "^2.0.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "webpack": "^5.72.0"

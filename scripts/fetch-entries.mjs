@@ -34,7 +34,7 @@ async function fetchIt() {
         // write to public
       );
   } catch (error) {
-    console.log(error);
+    throw error
   }
 }
 fetchIt();
