@@ -96,7 +96,12 @@ const Home: NextPage<{ contributors: any[] }> = ({ contributors }) => {
           </StyledTransition>
 
           <StyledTransition show={activeTab == 2}>
-            <Image className="rounded-xl" src={freshHome} alt="" />
+            <Image
+              placeholder="blur"
+              className="rounded-xl"
+              src={freshHome}
+              alt=""
+            />
             <Link
               href="/docs/user/features#清爽首页"
               className="btn mx-auto mt-4 w-fit px-4 py-2"
@@ -211,7 +216,7 @@ const Home: NextPage<{ contributors: any[] }> = ({ contributors }) => {
 
 export async function getStaticProps() {
   const contributors = await fetch(
-    "https://api.github.com/repos/the1812/Bilibili-Evolved/contributors "
+    "https://api.github.com/repos/the1812/Bilibili-Evolved/contributors"
   ).then((res) => res.json());
   return {
     props: {

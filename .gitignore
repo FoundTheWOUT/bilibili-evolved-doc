@@ -40,3 +40,5 @@ yarn-error.log*
 .vercel
 /public/entries/**/*
 !/public/entries/.gitkeep
+
+todo
