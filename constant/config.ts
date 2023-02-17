@@ -6,4 +6,6 @@ const config = {
   },
 };
 
+export const IS_SERVER = typeof window === "undefined";
+
 export default config;

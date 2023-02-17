@@ -39,9 +39,10 @@ const tabs = [
 const StyledTransition = ({
   children,
   show,
-}: PropsWithChildren<{ show: boolean }>) => (
+  className = "",
+}: PropsWithChildren<{ show: boolean; className?: string }>) => (
   <Transition
-    className="absolute "
+    className={cn("absolute", className)}
     show={show}
     enterFrom="opacity-0 -translate-x-10"
     enterTo="opacity-100 translate-x-0"
@@ -49,6 +50,8 @@ const StyledTransition = ({
     leaveFrom="opacity-100 translate-x-0"
     leaveTo="opacity-0 -translate-x-10"
     leave="transition duration-300"
+    appear={true}
+    unmount={false}
   >
     {children}
   </Transition>
@@ -63,31 +66,27 @@ const Home: NextPage<{ contributors: any[] }> = ({ contributors }) => {
         <title>欢迎o(*￣▽￣*)ブ</title>
       </Head>
 
-      <div className="flex lg:px-32">
+      <div className="flex gap-2 lg:px-32">
         {/* left */}
         <div className="light-up sticky top-0 hidden h-screen w-[46rem] items-center xl:flex">
-          <StyledTransition show={activeTab !== 2 && theme == Themes.LIGHT}>
-            {/* light */}
+          {/* light */}
+          <StyledTransition show={activeTab === 0 || activeTab === 1}>
             <Image
-              className="rounded-xl"
+              className="rounded-xl dark:hidden"
               src="/images/index/image-0.png"
               alt="img"
               width={321}
               height={911}
             />
-          </StyledTransition>
-
-          <StyledTransition show={activeTab !== 2 && theme == Themes.DARK}>
-            {/* dark */}
             <Image
-              className="absolute top-20 left-32 rounded-lg"
+              className="absolute top-20 left-32 hidden rounded-lg dark:block"
               src="/images/index/bilibili-dark.png"
               alt=""
               height={222}
               width={321}
             />
             <Image
-              className="rounded-xl"
+              className="hidden rounded-xl dark:block"
               src="/images/index/image-dark-0.png"
               alt="img"
               width={321}
@@ -140,7 +139,7 @@ const Home: NextPage<{ contributors: any[] }> = ({ contributors }) => {
                 <div
                   key={idx}
                   className={cn(
-                    "flex h-40 cursor-pointer flex-col justify-center rounded-xl border-4 p-4 transition lg:p-14",
+                    "flex h-40 cursor-pointer flex-col rounded-xl border-4 px-16 transition xl:px-6 2xl:px-14",
                     {
                       "border-MAIN/30": idx !== 3 && activeTab !== idx,
                       "border-MAIN shadow-lg shadow-MAIN/30":
@@ -149,20 +148,23 @@ const Home: NextPage<{ contributors: any[] }> = ({ contributors }) => {
                     }
                   )}
                   onClick={() => {
-                    setTab(idx);
                     if (idx === 3) {
                       theme == Themes.DARK ? setLightMode() : setDarkMode();
+                    } else {
+                      setTab(idx);
                     }
                   }}
                 >
                   <span
-                    className={cn("text-lg font-bold", {
+                    className={cn("flex basis-1/3 items-end font-bold", {
                       "text-MAIN": idx !== 3,
                     })}
                   >
                     {item.title}
                   </span>
-                  <p className="text-sm dark:text-white">{item.content}</p>
+                  <p className="text-ellipsis text-sm dark:text-white">
+                    {item.content}
+                  </p>
                 </div>
               ))}
             </div>
@@ -215,9 +217,14 @@ const Home: NextPage<{ contributors: any[] }> = ({ contributors }) => {
 };
 
 export async function getStaticProps() {
-  const contributors = await fetch(
-    "https://api.github.com/repos/the1812/Bilibili-Evolved/contributors"
-  ).then((res) => res.json());
+  let contributors = [];
+  try {
+    contributors = await fetch(
+      "https://api.github.com/repos/the1812/Bilibili-Evolved/contributors"
+    ).then((res) => res.json());
+  } catch (error) {
+    console.log(error);
+  }
   return {
     props: {
       contributors,
