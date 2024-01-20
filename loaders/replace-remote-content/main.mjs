@@ -40,9 +40,9 @@ const normalizeContentPlugin = () => {
       // ! only modify img
       if (
         node.type == "html" &&
-        (node.value.startsWith("<img") ||
-          node.value.startsWith("<!-") ||
-          node.value.startsWith("<style"))
+        (node.value.includes("<img") ||
+          node.value.includes("<!-") ||
+          node.value.includes("<style"))
       ) {
         if (isJsxNode(node)) return;
         const tree = fromHtml(node.value, { fragment: true }) ?? "";
@@ -148,10 +148,14 @@ const fetchContentPlugin = (options = {}) => {
             }
 
             return _p
-              .then((text) => fromMarkdown(text))
-              .then((mdast) =>
-                handleSectionSelect(mdast, { section: sections })
-              )
+              .then((text) => {
+                console.log("compiling markdown to mdast...");
+                return fromMarkdown(text);
+              })
+              .then((mdast) => {
+                console.log("selecting section...");
+                return handleSectionSelect(mdast, { section: sections });
+              })
               .then((mdast) => {
                 parent.children.splice(
                   offset + preFragmentLength,
@@ -159,6 +163,9 @@ const fetchContentPlugin = (options = {}) => {
                   ...mdast.children
                 );
                 preFragmentLength += mdast.children.length - 1;
+              })
+              .catch((error) => {
+                console.log("fetch content error:", error);
               });
           });
         }
