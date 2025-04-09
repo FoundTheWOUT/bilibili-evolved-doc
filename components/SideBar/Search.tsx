@@ -1,11 +1,12 @@
 import { SearchIcon } from "@heroicons/react/solid";
 import { useDocSearchKeyboardEvents, DocSearchModal } from "@docsearch/react";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
 import config from "constant/config";
 
 const Search = ({ ...props }) => {
   const [isModelShow, setModelShow] = useState(false);
+  const searchButtonRef = useRef(null);
 
   const onOpen = useCallback(
     function onOpen() {
@@ -25,12 +26,14 @@ const Search = ({ ...props }) => {
     isOpen: isModelShow,
     onClose,
     onOpen,
+    searchButtonRef,
   });
 
   return (
     <>
       <div {...props}>
         <button
+          ref={searchButtonRef}
           type="button"
           className="flex w-full items-center rounded bg-stone-100 p-2 text-gray-400 ring-sky-200 focus:ring dark:bg-stone-700 dark:text-stone-400 dark:ring-sky-700"
           onClick={onOpen}
