@@ -18,12 +18,6 @@ import rehypeSlug from "rehype-slug";
 import { loaderPromise as remoteContentLoader } from "loaders/replace-remote-content/main.mjs";
 import MDXWrapper from "components/MDXWrapper";
 
-// const LoadingComp = (
-//   <div className="h-[90vh] w-full flex justify-center items-center">
-//     <Loading className="h-20 text-MAIN" />
-//   </div>
-// );
-
 const MDXPage = ({ source, router, headings }: any) => {
   return (
     <SidebarProvider>

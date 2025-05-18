@@ -80,7 +80,7 @@ const Pre = ({ children }: JSX.IntrinsicElements["pre"]) => {
           }}
         />
       )}
-      <code className="hljs w-full rounded">{children}</code>
+      <code className="hljs w-full rounded-sm">{children}</code>
     </pre>
   );
 };
@@ -145,7 +145,7 @@ export const MDXComponents: Components = {
   img: ({ ...props }) => {
     return (
       <span className="m-2 flex">
-        <img className="max-h-[60rem] rounded-lg" {...props} alt="" />
+        <img className="max-h-240 rounded-lg" {...props} alt="" />
       </span>
     );
   },

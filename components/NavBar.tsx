@@ -7,7 +7,7 @@ import { SidebarContext } from "./SideBar";
 const NavBar = () => {
   const { showSidebar, hidden, hideSidebar } = React.useContext(SidebarContext);
   return (
-    <div className="sticky top-0 z-50 mb-2 h-14 border-b backdrop-blur lg:z-0 lg:border-none lg:backdrop-blur-none">
+    <div className="sticky top-0 z-50 mb-2 h-14 border-b backdrop-blur-sm lg:z-0 lg:border-none lg:backdrop-blur-none">
       <div className="flex h-full items-center lg:hidden">
         <div className="flex h-full w-14 items-center justify-center">
           <MenuAlt2Icon

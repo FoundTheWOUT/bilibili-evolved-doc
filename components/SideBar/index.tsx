@@ -33,7 +33,7 @@ export const SideBar = ({ routerTree }: SideBarProps) => {
     <div>
       <div
         className={cn(
-          "fixed left-0 right-0 z-30 h-screen backdrop-blur lg:hidden",
+          "fixed left-0 right-0 z-30 h-screen backdrop-blur-sm lg:hidden",
           {
             hidden,
           }

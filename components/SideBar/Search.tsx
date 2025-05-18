@@ -35,7 +35,7 @@ const Search = ({ ...props }) => {
         <button
           ref={searchButtonRef}
           type="button"
-          className="flex w-full items-center rounded bg-stone-100 p-2 text-gray-400 ring-sky-200 focus:ring dark:bg-stone-700 dark:text-stone-400 dark:ring-sky-700"
+          className="flex w-full items-center rounded-sm bg-stone-100 p-2 text-gray-400 ring-sky-200 focus:ring-3 dark:bg-stone-700 dark:text-stone-400 dark:ring-sky-700"
           onClick={onOpen}
         >
           <SearchIcon className="mx-2 h-5 w-5 text-stone-500 dark:text-stone-300" />

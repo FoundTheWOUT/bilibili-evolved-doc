@@ -1,16 +1,35 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer utilities {
-  .flex-center {
-    @apply flex items-center justify-center;
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
   }
 }
 
-@layer components {
-  .index-card {
-    @apply mt-6 flex h-60 w-60 cursor-pointer select-none flex-col items-center justify-center rounded-xl
+@theme {
+  --color-main: #1bb2ed;
+}
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
+@utility index-card {
+  @apply mt-6 flex h-60 w-60 cursor-pointer select-none flex-col items-center justify-center rounded-xl
     border
     bg-white
     p-6
@@ -29,33 +48,11 @@
     dark:hover:shadow-sky-700/50
     lg:h-96
     lg:w-96;
-  }
-
-  .btn {
-    @apply flex-center rounded-xl bg-MAIN text-white shadow-lg shadow-MAIN/50 transition-shadow active:shadow-none;
-  }
 }
 
-/* *::-webkit-scrollbar {
-  width: 5px !important;
-  height: 5px !important;
+@utility btn {
+  @apply flex-center rounded-xl text-white shadow-lg transition-shadow active:shadow-none bg-main shadow-main/50;
 }
-*::-webkit-scrollbar-corner;
-*::-webkit-scrollbar-track {
-  background: transparent !important;
-}
-*::-webkit-resizer;
-*::-webkit-scrollbar-thumb {
-  background: #aaa;
-  border-radius: 3px;
-}
-*::-webkit-scrollbar-thumb:hover {
-  background: #888;
-}
-* {
-  scrollbar-color: #aaa transparent;
-  scrollbar-width: thin !important;
-} */
 
 .light-up::after {
   content: "";

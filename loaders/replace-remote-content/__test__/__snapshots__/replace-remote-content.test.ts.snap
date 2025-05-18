@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Unit Test replace RemoteContent > cache hit 1`] = `
 "### Sugaring time begins in February and lasts for two to six weeks
@@ -40,7 +40,7 @@ low building built into the ledge along Clinton Brook. Its walls were of stone a
 
 ## Twice a day, and some days more often
 
-the sap was collected from each tree and carried up to the saphouse. The kettles were filled and, with a good hot fire beneath, thirty pails of sap would boil down to about eight quarts of syrup in four to five hours. As the sap boiled down and thickened it was removed from the fire and strained and then placed in the brass kettle over a low fire for the last bit of boiling down to syrup. The syrup, as it came from the saphouse, was usually not quite thick enough so it was Grandma's job to boil it a little longer on the back of the old wood-burning kitchen stove. For a thicker cream sugar (we called it \\"slush\\") and for sugar cakes, additional boiling and beating were required with all hands taking a turn. The beating cooled the heavy syrup and as it cooled it became granular and almost white. Our reward was the pan to \\"lick\\" out and hot syrup poured out on the snow for taffy.
+the sap was collected from each tree and carried up to the saphouse. The kettles were filled and, with a good hot fire beneath, thirty pails of sap would boil down to about eight quarts of syrup in four to five hours. As the sap boiled down and thickened it was removed from the fire and strained and then placed in the brass kettle over a low fire for the last bit of boiling down to syrup. The syrup, as it came from the saphouse, was usually not quite thick enough so it was Grandma's job to boil it a little longer on the back of the old wood-burning kitchen stove. For a thicker cream sugar (we called it "slush") and for sugar cakes, additional boiling and beating were required with all hands taking a turn. The beating cooled the heavy syrup and as it cooled it became granular and almost white. Our reward was the pan to "lick" out and hot syrup poured out on the snow for taffy.
 
 ### My brothers, sisters, and I, as youngsters
 
@@ -48,7 +48,7 @@ were at the saphouse every chance we got during the sugaring season, playing in 
 
 ## I especially remember the late thirties and early forties when the Newark Sunday News would do a picture story on Grandad and the sugaring.
 
-This brought out the sightseers and every weekend there would be groups of people around asking questions and taking pictures. Some came back each year and many came to buy the maple sugar products. The more adventurous ones would hike with us to the falls to view the old Clinton Iron Furnace. Many a time we would pack a lunch and stay all day at the saphouse, when school was not in session, and the weather was nice. But usually, it was up the hill to the \\"big house\\" with Grandad for dinner and the noonday farm chores; then back to the saphouse till supper time. If it was a season with a good run of sap, Grandad would boil some down at night. That was the best time of all, sitting in the saphouse with the fire for warmth and the old man's stories of long ago to pass the hours.
+This brought out the sightseers and every weekend there would be groups of people around asking questions and taking pictures. Some came back each year and many came to buy the maple sugar products. The more adventurous ones would hike with us to the falls to view the old Clinton Iron Furnace. Many a time we would pack a lunch and stay all day at the saphouse, when school was not in session, and the weather was nice. But usually, it was up the hill to the "big house" with Grandad for dinner and the noonday farm chores; then back to the saphouse till supper time. If it was a season with a good run of sap, Grandad would boil some down at night. That was the best time of all, sitting in the saphouse with the fire for warmth and the old man's stories of long ago to pass the hours.
 
 <div>
 
@@ -107,7 +107,7 @@ well into March. Weather permitting, Grandad always started tapping on Washingto
 
 ## Twice a day, and some days more often
 
-the sap was collected from each tree and carried up to the saphouse. The kettles were filled and, with a good hot fire beneath, thirty pails of sap would boil down to about eight quarts of syrup in four to five hours. As the sap boiled down and thickened it was removed from the fire and strained and then placed in the brass kettle over a low fire for the last bit of boiling down to syrup. The syrup, as it came from the saphouse, was usually not quite thick enough so it was Grandma's job to boil it a little longer on the back of the old wood-burning kitchen stove. For a thicker cream sugar (we called it \\"slush\\") and for sugar cakes, additional boiling and beating were required with all hands taking a turn. The beating cooled the heavy syrup and as it cooled it became granular and almost white. Our reward was the pan to \\"lick\\" out and hot syrup poured out on the snow for taffy.
+the sap was collected from each tree and carried up to the saphouse. The kettles were filled and, with a good hot fire beneath, thirty pails of sap would boil down to about eight quarts of syrup in four to five hours. As the sap boiled down and thickened it was removed from the fire and strained and then placed in the brass kettle over a low fire for the last bit of boiling down to syrup. The syrup, as it came from the saphouse, was usually not quite thick enough so it was Grandma's job to boil it a little longer on the back of the old wood-burning kitchen stove. For a thicker cream sugar (we called it "slush") and for sugar cakes, additional boiling and beating were required with all hands taking a turn. The beating cooled the heavy syrup and as it cooled it became granular and almost white. Our reward was the pan to "lick" out and hot syrup poured out on the snow for taffy.
 
 ### My brothers, sisters, and I, as youngsters
 
@@ -117,8 +117,8 @@ were at the saphouse every chance we got during the sugaring season, playing in 
 
 exports[`Unit Test replace RemoteContent > html image self close 1`] = `
 "<div>
-  <img height=\\"400\\" src=\\"https://user-images.githubusercontent.com/26504152/242905984-895cb72c-b344-40c3-91a0-2a6b20d5f783.png\\" />
-  <img height=\\"400\\" src=\\"https://user-images.githubusercontent.com/26504152/242905640-cbc948f1-734e-46f2-96a7-d57787b7cf47.png\\" />
+  <img height="400" src="https://user-images.githubusercontent.com/26504152/242905984-895cb72c-b344-40c3-91a0-2a6b20d5f783.png" />
+  <img height="400" src="https://user-images.githubusercontent.com/26504152/242905640-cbc948f1-734e-46f2-96a7-d57787b7cf47.png" />
 </div>
 "
 `;
@@ -158,7 +158,7 @@ well into March. Weather permitting, Grandad always started tapping on Washingto
 `;
 
 exports[`Unit Test replace RemoteContent > should return mdx properly 1`] = `
-"import Comp from \\"./Comp\\";
+"import Comp from "./Comp";
 
 <Comp />
 

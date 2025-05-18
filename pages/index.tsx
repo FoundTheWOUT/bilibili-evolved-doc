@@ -68,7 +68,7 @@ const Home: NextPage<{ contributors: any[] }> = ({ contributors }) => {
 
       <div className="flex gap-2 lg:px-32">
         {/* left */}
-        <div className="light-up sticky top-0 hidden h-screen w-[46rem] items-center xl:flex">
+        <div className="light-up sticky top-0 hidden h-screen w-184 items-center xl:flex">
           {/* light */}
           <StyledTransition show={activeTab === 0 || activeTab === 1}>
             <Image
@@ -115,7 +115,7 @@ const Home: NextPage<{ contributors: any[] }> = ({ contributors }) => {
           {/* page1 */}
           <section className="flex-center h-screen flex-col">
             <div className="flex flex-col">
-              <span className="text-7xl font-bold text-MAIN">
+              <span className="text-7xl font-bold text-main">
                 BiliBili-Evolved
               </span>
               <span className="mt-4 text-lg font-bold dark:text-white">
@@ -132,8 +132,8 @@ const Home: NextPage<{ contributors: any[] }> = ({ contributors }) => {
 
           {/* page2 */}
           <section className="flex-center mx-auto h-screen max-w-xl flex-col">
-            <span className="mr-auto text-2xl font-bold text-MAIN">我们有</span>
-            <div className="my-4 w-full border-b-2 border-MAIN/30"></div>
+            <span className="mr-auto text-2xl font-bold text-main">我们有</span>
+            <div className="my-4 w-full border-b-2 border-main/30"></div>
             <div className="grid w-full gap-5 lg:grid-cols-2">
               {tabs.map((item, idx) => (
                 <div
@@ -141,8 +141,8 @@ const Home: NextPage<{ contributors: any[] }> = ({ contributors }) => {
                   className={cn(
                     "flex h-40 cursor-pointer flex-col rounded-xl border-4 px-16 transition xl:px-6 2xl:px-14",
                     {
-                      "border-MAIN/30": idx !== 3 && activeTab !== idx,
-                      "border-MAIN shadow-lg shadow-MAIN/30":
+                      "border-main/30": idx !== 3 && activeTab !== idx,
+                      "border-main shadow-lg shadow-main/30":
                         idx !== 3 && activeTab === idx,
                       "border-stone-500 bg-black text-white": idx === 3,
                     }
@@ -157,7 +157,7 @@ const Home: NextPage<{ contributors: any[] }> = ({ contributors }) => {
                 >
                   <span
                     className={cn("flex basis-1/3 items-end font-bold", {
-                      "text-MAIN": idx !== 3,
+                      "text-main": idx !== 3,
                     })}
                   >
                     {item.title}
