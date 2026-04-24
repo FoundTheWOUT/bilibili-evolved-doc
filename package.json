@@ -18,6 +18,7 @@
     "@heroicons/react": "^1.0.5",
     "@mdx-js/loader": "^2.1.4",
     "@mdx-js/react": "^2.1.4",
+    "@vercel/analytics": "^2.0.1",
     "classnames": "^2.3.1",
     "github-slugger": "^1.4.0",
     "highlight.js": "^11.4.0",
