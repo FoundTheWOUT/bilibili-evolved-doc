@@ -10,15 +10,10 @@ const config = {
   images: {
     dangerouslyAllowSVG: true,
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "contrib.rocks",
-      },
-    ],
-    domains: [
-      "user-images.githubusercontent.com",
-      "cdn.jsdelivr.net",
-      "avatars.githubusercontent.com",
+      new URL("https://contrib.rocks"),
+      new URL("https://user-images.githubusercontent.com"),
+      new URL("https://cdn.jsdelivr.net"),
+      new URL("https://avatars.githubusercontent.com"),
     ],
   },
 };
