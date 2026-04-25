@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type JSX } from "react";
 import { RouteItem } from ".";
 import SideBarItem from "./SideBarItem";
 

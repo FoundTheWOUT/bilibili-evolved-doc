@@ -7,6 +7,7 @@ import "highlight.js/styles/github-dark.css";
 import { Components } from "@mdx-js/react/lib";
 import { ClipboardIcon, ClipboardCheckIcon } from "@heroicons/react/solid";
 import Link from "next/link";
+import type { JSX } from "react";
 // import SyntaxHighlighter from "react-syntax-highlighter";
 
 const P = (p: JSX.IntrinsicElements["p"]) => (

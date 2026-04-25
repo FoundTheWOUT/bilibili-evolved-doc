@@ -2,6 +2,8 @@ import cn from "classnames";
 import GithubSlugger from "github-slugger";
 import { LinkIcon } from "@heroicons/react/solid";
 
+import type { JSX } from "react";
+
 const parseElementToSting = (node: JSX.Element | string): string => {
   if (typeof node === "string") return node;
   return parseElementToSting(node.props.children);
