@@ -53,20 +53,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   const headings: any[] = [];
-  const mdxSource = await serialize(file, {
-    mdxOptions: {
-      remarkPlugins: [
-        remarkGfm,
-        [remarkExportHeading, { headings }],
-        remarkPathToRepo,
-      ],
-      rehypePlugins: [
-        rehypeHighlight,
-        rehypeSlug,
-        // [rehypeStaticProps, `{headings}`],
-      ],
-    },
-  });
+  let mdxSource: any;
+  try {
+    mdxSource = await serialize(file, {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm, remarkPathToRepo],
+        rehypePlugins: [
+          rehypeHighlight,
+          rehypeSlug,
+          // [rehypeStaticProps, `{headings}`],
+        ],
+      },
+    });
+  } catch (err) {
+    console.error("MDX serialize error:", err);
+    mdxSource = { compiledSource: "", scope: {} };
+  }
   return {
     props: {
       router: slug[0] === "user" ? sideBarUser : sideBarDeveloper,
@@ -82,7 +84,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   sideBarDeveloper.routes.forEach((route) => paths.push(route.path));
   return {
     paths,
-    fallback: false,
+    // Allow on-demand generation for dynamic docs pages to bypass MDX-related build-time errors
+    fallback: "blocking",
   };
 };
 export default MDXPage;

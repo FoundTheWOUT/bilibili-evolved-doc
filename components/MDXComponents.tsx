@@ -4,7 +4,7 @@
 import * as React from "react";
 import { H1, H2, H3, H4 } from "./Heading";
 import "highlight.js/styles/github-dark.css";
-import { Components } from "@mdx-js/react/lib";
+import type { MDXProvider } from "@mdx-js/react";
 import { ClipboardIcon, ClipboardCheckIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import type { JSX } from "react";
@@ -46,7 +46,7 @@ const Blockquote = ({
   return (
     <>
       <blockquote
-        className="relative my-8 flex rounded-lg bg-gray-100 bg-opacity-50 py-4 px-8 leading-6 shadow-inner dark:bg-neutral-700"
+        className="bg-opacity-50 relative my-8 flex rounded-lg bg-gray-100 px-8 py-4 leading-6 shadow-inner dark:bg-neutral-700"
         {...props}
       >
         <span className="relative block">{children}</span>
@@ -95,7 +95,9 @@ const InlineCode = ({ ...props }: JSX.IntrinsicElements["code"]) => {
   );
 };
 
-export const MDXComponents: Components = {
+export const MDXComponents: React.ComponentProps<
+  typeof MDXProvider
+>["components"] = {
   p: P,
   strong: Strong,
   blockquote: Blockquote,
